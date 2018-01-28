@@ -135,7 +135,9 @@
                           </div>
                         </div>
                         <div class="modal-footer">
+                          <button class="btn btn-danger" type="button" style="float: left;">Delete</button>
                           <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+
                           <button class="btn btn-info" type="button" type="submit">Update</button>                         
                         </div>
                       </form>

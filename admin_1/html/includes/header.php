@@ -10,8 +10,10 @@
     <link href="../../../vendors/themify-icons/css/themify-icons.css" rel="stylesheet"/>
     <link href="../../../vendors/animate.css/animate.min.css" rel="stylesheet"/>
     <link href="../../../vendors/toastr/toastr.min.css" rel="stylesheet"/>  
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" rel="stylesheet">
-
+    <link href="../../../vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet"/>
+    <link href="../../../vendors/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+    <link href="../../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet"/>
+    
     <!-- PLUGINS STYLES-->
     <!-- THEME STYLES-->
     <link href="../assets/css/main.css" rel="stylesheet"/>
