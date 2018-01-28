@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2018 at 01:13 PM
+-- Generation Time: Jan 28, 2018 at 02:28 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -35,6 +35,145 @@ CREATE TABLE `client` (
   `client_poc` text NOT NULL,
   `client_poc_no` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee`
+--
+
+CREATE TABLE `employee` (
+  `emp_id` varchar(15) DEFAULT NULL,
+  `name` varchar(500) DEFAULT NULL,
+  `nat_emp` varchar(100) DEFAULT NULL,
+  `personal_no` varchar(50) DEFAULT NULL,
+  `dob` varchar(50) DEFAULT NULL,
+  `doj` varchar(50) DEFAULT NULL,
+  `design` varchar(200) DEFAULT NULL,
+  `pan_no` varchar(10) DEFAULT NULL,
+  `aadhar_no` int(12) DEFAULT NULL,
+  `perm_addr` varchar(5000) DEFAULT NULL,
+  `contct_det` varchar(100) DEFAULT NULL,
+  `emr_cntct_per` varchar(200) DEFAULT NULL,
+  `emr_cntct_no` varchar(100) DEFAULT NULL,
+  `blood_grp` varchar(100) DEFAULT NULL,
+  `qualifications` varchar(500) DEFAULT NULL,
+  `supprt_docs` varchar(1000) DEFAULT NULL,
+  `serv_agr` varchar(500) DEFAULT NULL,
+  `offr_letter` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_leaves`
+--
+
+CREATE TABLE `emp_leaves` (
+  `emp_id` text NOT NULL,
+  `paid_leaves` int(3) NOT NULL,
+  `unpaid_leaves` int(3) NOT NULL,
+  `earned_leaves` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `holidays`
+--
+
+CREATE TABLE `holidays` (
+  `hol_type` text NOT NULL,
+  `hol_date` date NOT NULL,
+  `hol_desc` text NOT NULL,
+  `hol_start` date NOT NULL,
+  `hol_end` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leaves`
+--
+
+CREATE TABLE `leaves` (
+  `leave_id` int(11) NOT NULL,
+  `title` varchar(500) NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL,
+  `day_type` varchar(100) NOT NULL,
+  `leave_type` varchar(100) NOT NULL,
+  `reason` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `privileges`
+--
+
+CREATE TABLE `privileges` (
+  `emp_id` text NOT NULL,
+  `priv` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reimbursement`
+--
+
+CREATE TABLE `reimbursement` (
+  `rem_id` text NOT NULL,
+  `status_id` text NOT NULL,
+  `rem_desc` text NOT NULL,
+  `approval` int(2) NOT NULL DEFAULT '0',
+  `rem_suprt` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status_report`
+--
+
+CREATE TABLE `status_report` (
+  `status_id` text NOT NULL,
+  `emp_id` text NOT NULL,
+  `client_id` text NOT NULL,
+  `status_date` date NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `work_hrs` int(3) NOT NULL,
+  `work_status` text NOT NULL,
+  `nat_work` text NOT NULL,
+  `work_subject` text NOT NULL,
+  `billed` text NOT NULL,
+  `add_comments` text NOT NULL,
+  `work_details` text NOT NULL,
+  `remarks` text NOT NULL,
+  `remb` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `leaves`
+--
+ALTER TABLE `leaves`
+  ADD PRIMARY KEY (`leave_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `leaves`
+--
+ALTER TABLE `leaves`
+  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
