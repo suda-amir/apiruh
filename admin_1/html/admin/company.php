@@ -100,13 +100,93 @@
                       </form>
                     </div>
                     <div class="tab-pane fade" id="tab-2">
-                     
+                      
+                        <div class="ibox">
+                          <div class="ibox-body">
+                            <div class="table-responsive">
+                              <table class="table table-striped table-bordered table-hover" id="example-table">
+                                <thead>
+                                  <tr>
+                                    <th>Subject</th>
+                                    <th>Nature of Work</th>
+                                    <th>Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Test</td>
+                                    <td>Test</td>
+                                    <td>
+                                      <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-pencil font-14"></i></button></a>
+                                       <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye font-14"></i></button></a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      
                     </div>
                     <div class="tab-pane fade" id="tab-3">
                      
+                        <div class="ibox">
+                          <div class="ibox-body">
+                            <div class="table-responsive">
+                              <table class="table table-striped table-bordered table-hover" id="example-table">
+                                <thead>
+                                  <tr>
+                                    <th>Subject</th>
+                                    <th>Nature of Work</th>
+                                    <th>Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Test</td>
+                                    <td>Test</td>
+                                    <td>
+                                      <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-pencil font-14"></i></button></a>
+                                      <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-close font-14"></i></button></a>
+                                       <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye font-14"></i></button></a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                     
                     </div>
                     <div class="tab-pane fade" id="tab-4">
-                     
+                      
+                        <div class="ibox">
+                          <div class="ibox-body">
+                            <div class="table-responsive">
+                              <table class="table table-striped table-bordered table-hover" id="example-table">
+                                <thead>
+                                  <tr>
+                                    <th>Subject</th>
+                                    <th>Nature of Work</th>
+                                    <th>Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Test</td>
+                                    <td>Test</td>
+                                    <td>
+                                      <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-pencil font-14"></i></button></a>
+                                      <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-close font-14"></i></button></a>
+                                       <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye font-14"></i></button></a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      
                     </div>
                   </div>
                 </div>
