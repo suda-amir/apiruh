@@ -105,7 +105,7 @@
                     <tr>
                       <td>Test</td>
                       <td>Test</td>
-                      <td>Test</td>
+                      <td><span class="badge badge-success">Paid</span></td>
                       <td>Test</td>
                       <td><span class="badge badge-success">Stock</span></td>
                       <td>
