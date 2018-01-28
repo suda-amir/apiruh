@@ -39,14 +39,14 @@
                           <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Title:</label>
                             <div class="col-sm-10">
-                              <input class="form-control" id="new-event-title" type="text">
+                              <input class="form-control" id="new-event-title" name="title" type="text">
                             </div>
                           </div>
                           <div class="form-group row" id="date_1">
                             <label class="col-sm-2 col-form-label">Start:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="" type="text" value="">
+                                <input class="form-control" id="" type="text" value="" name="start">
                               </div>
                             </div>
                           </div>
@@ -54,7 +54,7 @@
                             <label class="col-sm-2 col-form-label">End:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="" type="text" value="">
+                                <input class="form-control" id="" type="text" value="" name="end">
                               </div>
                             </div>
                           </div>
@@ -112,14 +112,14 @@
                           <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Title:</label>
                             <div class="col-sm-10">
-                              <input class="form-control" id="new-event-title" type="text">
+                              <input class="form-control" id="new-event-title" name="title" type="text">
                             </div>
                           </div>
                           <div class="form-group row" id="date_3">
                             <label class="col-sm-2 col-form-label">Start:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="" type="text" value="">
+                                <input class="form-control" id="" type="text" value="" name="start">
                               </div>
                             </div>
                           </div>
@@ -127,7 +127,7 @@
                             <label class="col-sm-2 col-form-label">End:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="" type="text" value="">
+                                <input class="form-control" id="" type="text" value="" name="end">
                               </div>
                             </div>
                           </div>
