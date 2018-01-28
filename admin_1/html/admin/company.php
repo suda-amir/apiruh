@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   
-  <?php require_once('../includes/header.php'); ?>
+  <?php 
+  $page_name = "Employee";
+  $page_name_emp = "Daily";
+  require_once('../includes/header.php'); ?>
   <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
 
 
@@ -14,10 +17,10 @@
         
          <!-- START PAGE CONTENT-->
          <div class="page-heading">
-          <h1 class="page-title">Profile</h1>
+          <h1 class="page-title">Client Profile</h1>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Profile</li>
+            <li class="breadcrumb-item active">Client Profile</li>
           </ol>
         </div>
         <div class="page-content fade-in-up">
@@ -27,12 +30,9 @@
                 <div class="ibox-body text-center">
                   <div class="m-t-20"><img class="img-circle" src="../assets/img/users/u3.jpg"/>
                   </div>
-                  <h5 class="font-strong m-b-10 m-t-10">Frank Cruz</h5>
-                  <p class="  m-b-10 m-t-10">Emp ID</p>
-                  <div class="m-b-20 text-muted">Web Developer</div>
+                  <h5 class="font-strong m-b-10 m-t-10">Company Name</h5>
+                  <p class="  m-b-10 m-t-10">Client ID</p>
                   <button class="btn btn-default labeled"><span class="btn-label"><i class="fa fa-pencil"></i></span>Edit</button>
-
-
                 </div>
               </div>
             </div>
@@ -40,76 +40,51 @@
               <div class="ibox">
                 <div class="ibox-body">
                   <ul class="nav nav-tabs tabs-line">                    
-                    <li class="nav-item"><a class="nav-link active" href="#tab-1" data-toggle="tab"><i class="ti-settings"></i> Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab-2" data-toggle="tab"><i class="ti-announcement"></i> Notifications</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#tab-1" data-toggle="tab"><i class="ti-settings"></i> Profile</a></li>                                        
+                    <li class="nav-item"><a class="nav-link" href="#tab-2" data-toggle="tab"><i class="ti-book"></i> Subjects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab-3" data-toggle="tab"><i class="ti-user"></i> Employees Assigned</a></li>                    
+                    <li class="nav-item"><a class="nav-link" href="#tab-4" data-toggle="tab"><i class="ti-files"></i> Agreements & Documents</a></li>
                   </ul>
                   <div class="tab-content">
                     <div class="tab-pane fade show active" id="tab-1">
                       <form action="javascript:void(0)">
                         <div class="row">
                           <div class="col-sm-6 form-group">
-                            <label>Name</label>
+                            <label>Company Name</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
                               <input class="form-control" type="text" placeholder="Name">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
-                            <label>Nature of Employement</label>
+                            <label>Client Manager</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
                               <input class="form-control" type="text" placeholder="with icon">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
-                            <label>Employee ID</label>
+                            <label>Reporting Person</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
                               <input class="form-control" type="text" placeholder="Name">
                             </div>
                           </div>
-                          <div class="col-sm-6 form-group">
-                            <label>Designation</label>
-                            <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
-                            </div>
-                          </div>
-                          <div class="col-sm-6 form-group">
-                            <label>Mobile #</label>
-                            <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
-                            </div>
-                          </div>
-                          <div class="col-sm-6 form-group">
-                            <label>Email</label>
-                            <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
-                            </div>
-                          </div>
                           <div class="col-sm-6 form-group" id="date_1">
-                            <label>Date of Birth (D.O.B)</label>
-                            <div class="input-group date form_datetime"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                              <input class="form-control">
-                            </div>
-                          </div>
-                          <div class="col-sm-6 form-group" id="date_1">
-                            <label>Date of Joining (D.O.J)</label>
+                            <label>Client Since</label>
                             <div class="input-group date form_datetime"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
                               <input class="form-control">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
-                            <label>PAN #</label>
+                            <label>Clinet POC</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
                               <input class="form-control" type="text" placeholder="with icon">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
-                            <label>Aadhaar # </label>
+                            <label>Contact #</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
                               <input class="form-control" type="text" placeholder="with icon">
@@ -121,104 +96,17 @@
                               <textarea class="form-control" rows="3" maxlength="75" placeholder="This textarea has a limit of 75 chars."></textarea>
                             </div>
                           </div>
-                          <div class="col-sm-6 form-group">
-                            <label>Emergency Contact Person</label>
-                            <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
-                            </div>
-                          </div>
-                          <div class="col-sm-6 form-group">
-                            <label>Emergency Contact # </label>
-                            <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
-                            </div>
-                          </div>
-                          <div class="col-sm-6 form-group">
-                            <label>Blood Group</label>
-                            <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
-                            </div>
-                          </div>
-                          <div class="col-sm-6 form-group">
-                            <label>Qualications</label>
-                            <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
-                            </div>
-                          </div>
-                          <div class="col-sm-6 form-group">
-                            <label>Supporting Documents</label>
-                            <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="file" placeholder="with icon">
-                            </div>
-                          </div>
-                          <div class="col-sm-6 form-group">
-                            <label>Service Level Agreement</label>
-                            <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="file" placeholder="with icon">
-                            </div>
-                          </div>
-                          <div class="col-sm-6 form-group">
-                            <label>Offer Letter</label>
-                            <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="file" placeholder="with icon">
-                            </div>
-                          </div>
                         </div>                        
                       </form>
                     </div>
+                    <div class="tab-pane fade" id="tab-2">
+                     
+                    </div>
                     <div class="tab-pane fade" id="tab-3">
-                      <h5 class="text-info m-b-20 m-t-20"><i class="fa fa-bullhorn"></i> Latest Feeds</h5>
-                      <ul class="media-list media-list-divider m-0">
-                        <li class="media">
-                          <div class="media-img"><i class="ti-user font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading">New customer <small class="float-right text-muted">12:05</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <div class="media-img"><i class="ti-info-alt font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading text-warning">Server Warning <small class="float-right text-muted">12:05</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <div class="media-img"><i class="ti-announcement font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading">7 new feedback <small class="float-right text-muted">Today</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <div class="media-img"><i class="ti-check font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading text-success">Issue fixed <small class="float-right text-muted">12:05</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <div class="media-img"><i class="ti-shopping-cart font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading">7 New orders <small class="float-right text-muted">12:05</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <div class="media-img"><i class="ti-reload font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading text-danger">Server warning <small class="float-right text-muted">12:05</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                      </ul>
+                     
+                    </div>
+                    <div class="tab-pane fade" id="tab-4">
+                     
                     </div>
                   </div>
                 </div>
