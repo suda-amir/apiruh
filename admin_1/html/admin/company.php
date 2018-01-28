@@ -99,10 +99,8 @@
                         </div>                        
                       </form>
                     </div>
-                    <div class="tab-pane fade" id="tab-2">
+                    <div class="tab-pane" id="tab-2">
                       
-                        <div class="ibox">
-                          <div class="ibox-body">
                             <div class="table-responsive">
                               <table class="table table-striped table-bordered table-hover" id="example-table">
                                 <thead>
@@ -123,17 +121,12 @@
                                   </tr>
                                 </tbody>
                               </table>
-                            </div>
-                          </div>
-                        </div>
-                      
+                            </div>                      
                     </div>
-                    <div class="tab-pane fade" id="tab-3">
+                    <div class="tab-pane" id="tab-3">
                      
-                        <div class="ibox">
-                          <div class="ibox-body">
                             <div class="table-responsive">
-                              <table class="table table-striped table-bordered table-hover" id="example-table">
+                              <table class="table table-striped table-bordered table-hover" id="example-table2">
                                 <thead>
                                   <tr>
                                     <th>Subject</th>
@@ -154,16 +147,11 @@
                                 </tbody>
                               </table>
                             </div>
-                          </div>
-                        </div>
-                     
                     </div>
-                    <div class="tab-pane fade" id="tab-4">
+                    <div class="tab-pane" id="tab-4">
                       
-                        <div class="ibox">
-                          <div class="ibox-body">
                             <div class="table-responsive">
-                              <table class="table table-striped table-bordered table-hover" id="example-table">
+                              <table class="table table-striped table-bordered table-hover" id="example-table3">
                                 <thead>
                                   <tr>
                                     <th>Subject</th>
@@ -184,9 +172,7 @@
                                 </tbody>
                               </table>
                             </div>
-                          </div>
-                        </div>
-                      
+                         
                     </div>
                   </div>
                 </div>
@@ -246,6 +232,42 @@
         <script type="text/javascript">
       $(function(){
           $('#example-table').DataTable({
+              pageLength: 10,
+              fixedHeader: true,
+              responsive: true,
+              dom: '<"html5buttons"B>lTfgitp',
+              buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'print',
+                'colvis'
+              ],
+              language: {
+                buttons: {
+                  colvis: '<i class="ti-view-grid"></i>'
+                }
+              }
+          });
+          $('#example-table2').DataTable({
+              pageLength: 10,
+              fixedHeader: true,
+              responsive: true,
+              dom: '<"html5buttons"B>lTfgitp',
+              buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'print',
+                'colvis'
+              ],
+              language: {
+                buttons: {
+                  colvis: '<i class="ti-view-grid"></i>'
+                }
+              }
+          });
+          $('#example-table3').DataTable({
               pageLength: 10,
               fixedHeader: true,
               responsive: true,
