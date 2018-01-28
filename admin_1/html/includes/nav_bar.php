@@ -1,6 +1,6 @@
  <!-- START HEADER-->
       <header class="header clf">
-        <div class="page-brand"><a class="link" href="index.html"><span class="brand">Admin<span class="brand-tip">Ca</span></span><span class="brand-mini">AC</span></a></div>
+        <div class="page-brand"><a class="link" href="index.html"><span class="brand">Apiruh</span><span class="brand-mini">APH</span></a></div>
         <!-- START TOP-LEFT TOOLBAR-->
         <ul class="nav pull-left navbar-toolbar">
           <li><a class="nav-link sidebar-toggler js-sidebar-toggler"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></li>
