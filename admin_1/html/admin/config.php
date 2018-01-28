@@ -2,7 +2,7 @@
 @session_start();
 //Sets database connection information
 $databaseServer="localhost" ;
-$databaseUsername="root@localhost" ;
+$databaseUsername="root" ;
 $databasePassword='' ;
 $databaseName='apiruh';
 

@@ -4,6 +4,9 @@
   <?php
       $page_name_emp = "Employee";
       require_once('../includes/header.php');
+      require_once('functions.php');
+      $emp_id = $_GET['id'];
+      $data = get_emp_data($emp_id);
   ?>
   <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
 
@@ -30,10 +33,10 @@
                 <div class="ibox-body text-center">
                   <div class="m-t-20"><img class="img-circle" src="../assets/img/users/u3.jpg"/>
                   </div>
-                  <h5 class="font-strong m-b-10 m-t-10">Frank Cruz</h5>
-                  <p class="  m-b-10 m-t-10">Emp ID</p>
-                  <div class="m-b-20 text-muted">Web Developer</div>
-                  <button class="btn btn-default labeled"><span class="btn-label"><i class="fa fa-pencil"></i></span>Edit</button>
+                  <h5 class="font-strong m-b-10 m-t-10"><?php foreach($data as $key){echo $key->name;} ?></h5>
+                  <p class="  m-b-10 m-t-10"><?php foreach ($data as $key){echo $key->id;} ?></p>
+                  <div class="m-b-20 text-muted"><?php foreach ($data as $key){echo $key->design;} ?></div>
+                  <button class="btn btn-default labeled" id="edit_profile"><span class="btn-label"><i class="fa fa-pencil"></i></span>Edit</button>
 
 
                 </div>
@@ -48,180 +51,134 @@
                   </ul>
                   <div class="tab-content">
                     <div class="tab-pane fade show active" id="tab-1">
-                      <form action="javascript:void(0)">
+                      <form action="update_emp_details.php" method="POST" id="update_form" enctype="multipart/form-data">
                         <div class="row">
                           <div class="col-sm-6 form-group">
                             <label>Name</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="Name">
+                              <input class="form-control" type="text" placeholder="Name" name="name" value="<?php foreach ($data as $key){echo $key->name;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Nature of Employement</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
+                              <input class="form-control" type="text" placeholder="with icon" name="nature_of_employment" value="<?php foreach ($data as $key){echo $key->nat_emp;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Employee ID</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="Name">
+                              <input class="form-control" type="text" placeholder="Name" name="emp_id" value="<?php foreach ($data as $key){echo $key->emp_id;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Designation</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
+                              <input class="form-control" type="text" placeholder="with icon" name="designation" value="<?php foreach ($data as $key){echo $key->design;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Mobile #</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
+                              <input class="form-control" type="text" placeholder="with icon" name="mobile_num" value="<?php foreach ($data as $key){echo $key->personal_no;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Email</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
+                              <input class="form-control" type="text" placeholder="with icon" name="email"> value="<?php foreach ($data as $key){echo $key->email;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group" id="date_1">
                             <label>Date of Birth (D.O.B)</label>
                             <div class="input-group date form_datetime"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                              <input class="form-control">
+                              <input class="form-control" name="dob" value="<?php foreach ($data as $key){echo $key->dob;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group" id="date_1">
                             <label>Date of Joining (D.O.J)</label>
                             <div class="input-group date form_datetime"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                              <input class="form-control">
+                              <input class="form-control" name="doj" value="<?php foreach ($data as $key){echo $key->doj;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>PAN #</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
+                              <input class="form-control" type="text" placeholder="with icon" name="pan" value="<?php foreach ($data as $key){echo $key->pan_no;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Aadhaar # </label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
+                              <input class="form-control" type="text" placeholder="with icon" name="aadhar" value="<?php foreach ($data as $key){echo $key->aadhar_no;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-12 form-group">
                             <label>Permanent Address</label>
                             <div class="form-group">
-                              <textarea class="form-control" rows="3" maxlength="75" placeholder="This textarea has a limit of 75 chars."></textarea>
+                              <textarea class="form-control" rows="3" maxlength="75" placeholder="This textarea has a limit of 75 chars." name="addr"><?php foreach ($data as $key){echo $key->perm_addr;} ?></textarea>
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Emergency Contact Person</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
+                              <input class="form-control" type="text" placeholder="with icon" name="emer_contact_per" value="<?php foreach ($data as $key){echo $key->emr_cntct_per;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Emergency Contact # </label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
+                              <input class="form-control" type="text" placeholder="with icon" name="emer_contact" value="<?php foreach ($data as $key){echo $key->emr_cntct_no;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Blood Group</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
+                              <input class="form-control" type="text" placeholder="with icon" name="blood" value="<?php foreach ($data as $key){echo $key->blood_grp;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Qualications</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon">
+                              <input class="form-control" type="text" placeholder="with icon" name="qualifications" value="<?php foreach ($data as $key){echo $key->qualifications;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Supporting Documents</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="file" placeholder="with icon">
+                              <input class="form-control" type="file" placeholder="with icon" name="docs">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Service Level Agreement</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="file" placeholder="with icon">
+                              <input class="form-control" type="file" placeholder="with icon" name="sla">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
                             <label>Offer Letter</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="file" placeholder="with icon">
+                              <input class="form-control" type="file" placeholder="with icon" name="offer_letter">
                             </div>
                           </div>
                         </div>                        
                       </form>
-                    </div>
-                    <div class="tab-pane fade" id="tab-3">
-                      <h5 class="text-info m-b-20 m-t-20"><i class="fa fa-bullhorn"></i> Latest Feeds</h5>
-                      <ul class="media-list media-list-divider m-0">
-                        <li class="media">
-                          <div class="media-img"><i class="ti-user font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading">New customer <small class="float-right text-muted">12:05</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <div class="media-img"><i class="ti-info-alt font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading text-warning">Server Warning <small class="float-right text-muted">12:05</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <div class="media-img"><i class="ti-announcement font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading">7 new feedback <small class="float-right text-muted">Today</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <div class="media-img"><i class="ti-check font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading text-success">Issue fixed <small class="float-right text-muted">12:05</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <div class="media-img"><i class="ti-shopping-cart font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading">7 New orders <small class="float-right text-muted">12:05</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <div class="media-img"><i class="ti-reload font-18 text-muted"></i></div>
-                          <div class="media-body">
-                            <div class="media-heading text-danger">Server warning <small class="float-right text-muted">12:05</small></div>
-                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
-                          </div>
-                        </li>
-                      </ul>
+                      <button class="btn btn-info" id="submit_update">Update Details</button>
                     </div>
                   </div>
                 </div>
@@ -231,10 +188,6 @@
         </div>
         <!-- END PAGE CONTENT--> 
 
-       <footer class="page-footer">
-          <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
-          <div class="pull-right"><a class="link-blue" href="javascript:;"><i class="fa fa-shopping-cart m-r-5"></i>Buy now</a></div>2017 © <b>Adminca</b> - Save your time, choose the best
-        </footer>
                 <?php require_once('../includes/footer.php'); ?>
 
       </div>
@@ -277,7 +230,17 @@
     <!-- CORE PLUGINS-->
         <?php require_once('../includes/scripts.php'); ?>
         <script src="../../../vendors/dataTables/datatables.min.js" type="text/javascript"></script>
-
+        <script type="text/javascript">
+          $("#tab-1 :input").attr("disabled", true);
+          $("#edit_profile").click(function(){
+            $("#tab-1 :input").attr("disabled", false);
+          });
+          $("#submit_update").click(function(){
+            $("#tab-1 :input").attr("disabled", true);
+            $("#update_form").submit();
+          });
+          
+        </script>
         <script type="text/javascript">
       $(function(){
           $('#example-table').DataTable({

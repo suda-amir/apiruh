@@ -4,6 +4,9 @@
 <?php
       $page_name_emp = "Employee";
       require_once('../includes/header.php');
+      require_once('functions.php');
+      $emp = get_emp_details();
+
   ?>
   <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
    <link href="../assets/css/pages/ecommerce.css" rel="stylesheet"/>
@@ -34,109 +37,21 @@
           <div class="page-content fade-in-up" style="padding-top: 0px; margin-top: 0px">
           <div class="row products-board">
             <div class="col-lg-3 col-sm-6">
+              <?php
+                foreach ($emp as $key){
+              ?>
               <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="../admin/employee_profile">Employee name</a>
-                  <div class="product-price">Designation</div>
-                  <div class="product-price">MAil ID</div>
+                <div class="card-body"><a class="product-name" href="../admin/employee_profile?id=<?=$key->emp_id?>"><?= $key->name; ?></a>
+                  <div class="product-price"><?= $key->design; ?></div>
+                  <div class="product-price"><?= $key->email; ?></div>
                   <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <a href="../admin/employee_profile"><button class="btn btn-outline-info btn-rounded"><i class="fa fa-eye font-16"></i> View Profile</button></a>
+                    <a href="../admin/employee_profile?id=<?=$key->emp_id?>"><button class="btn btn-outline-info btn-rounded"><i class="fa fa-eye font-16"></i> View Profile</button></a>
                   </div>
                 </div>
               </div>
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="javascript:;">Product name</a>
-                  <div class="product-price">$240.00</div>
-                  <div class="m-t-10 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-outline-info btn-rounded"><i class="fa fa-shopping-cart font-16"></i> Add to cart</button><a class="text-muted"><i class="fa fa-heart-o font-16"></i></a>
-                  </div>
-                </div>
-              </div>
+              <?php 
+                }
+              ?>
             </div>
           </div>
         </div>
