@@ -1,6 +1,6 @@
 <?php
 
-require_once('../config.php');
+require_once('./config.php');
 session_start();
 
 $title = $_POST['title'];
@@ -8,7 +8,7 @@ $start_date = $_POST['start'];
 $end_date = $_POST['end'];
 $reason = $_POST['reason'];
 try{
-	$stmt = $connection->prepare("INSERT INTO `emp_leaves`(`lead_id`, `name`, `guardian_type`, `numberCode`, `number`, `email`, `relation_other`) VALUES (:id, :gname, :gtype, :numberCode, :gnumber, :gemail, :gt)");
+	$stmt = $connection->prepare("INSERT INTO `holidays`(`hol_type`, `hol_date`, `hol_desc`, `hol_start`, `hol_end`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5])");
 	
 	$stmt->bindParam("title", $title,PDO::PARAM_STR) ;
 	$stmt->bindParam("start_date", $start_date,PDO::PARAM_STR) ;

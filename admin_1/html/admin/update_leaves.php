@@ -12,8 +12,9 @@ $half_leave = $_POST['half_leave'];
 $leave_type = $_POST['leave_type'];
 $reason = $_POST['reason'];
 try{
-	$stmt = $connection->prepare("INSERT INTO `emp_leaves`(`lead_id`, `name`, `guardian_type`, `numberCode`, `number`, `email`, `relation_other`) VALUES (:id, :gname, :gtype, :numberCode, :gnumber, :gemail, :gt)");
+	$stmt = $connection->prepare("UPDATE `leaves` SET `leave_id`=:id,`title`=:title,`start`=:start_date,`end`=:end_date,`day_type`=:half_leave,`leave_type`=:leave_type,`reason`=:reason WHERE 1");
 
+	$stmt->bindParam("id", $emp_id,PDO::PARAM_STR) ;
 	$stmt->bindParam("title", $title,PDO::PARAM_STR) ;
 	$stmt->bindParam("start_date", $start_date,PDO::PARAM_STR) ;
 	$stmt->bindParam("end_date", $end_date,PDO::PARAM_STR) ;
