@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   
-  <?php require_once('../includes/header.php'); ?>
-  <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
+<?php
+      $page_name_emp = "Leaves";
+      require_once('../includes/header.php');
+  ?>  <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
 
 
   <body class="fixed-navbar">
