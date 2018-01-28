@@ -9,9 +9,20 @@
     <link href="../../../vendors/line-awesome/css/line-awesome.min.css" rel="stylesheet"/>
     <link href="../../../vendors/themify-icons/css/themify-icons.css" rel="stylesheet"/>
     <link href="../../../vendors/animate.css/animate.min.css" rel="stylesheet"/>
-    <link href="../../../vendors/toastr/toastr.min.css" rel="stylesheet"/>
+    <link href="../../../vendors/toastr/toastr.min.css" rel="stylesheet"/>  
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" rel="stylesheet">
+
     <!-- PLUGINS STYLES-->
     <!-- THEME STYLES-->
     <link href="../assets/css/main.css" rel="stylesheet"/>
     <!-- PAGE LEVEL STYLES-->
   </head>
+  <style type="text/css">
+      .modal-dialog{
+        min-width: 60% !important;
+        max-width: 60% !important;
+      }
+      a.btn.btn-info{
+        color: #fff;
+      }
+  </style>

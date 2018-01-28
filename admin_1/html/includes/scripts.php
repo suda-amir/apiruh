@@ -9,6 +9,8 @@
     <script src="../../../vendors/chart.js/dist/Chart.min.js" type="text/javascript"></script>
     <script src="../../../vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js" type="text/javascript"></script>
     <script src="../../../vendors/jquery-sparkline/dist/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+
     <!-- CORE SCRIPTS-->
     <script src="../assets/js/app.js" type="text/javascript"></script>
     <!-- PAGE LEVEL SCRIPTS-->
