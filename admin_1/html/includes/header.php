@@ -13,6 +13,7 @@
     <link href="../../../vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet"/>
     <link href="../../../vendors/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
     <link href="../../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet"/>
+    <link href="../../../vendors/clockpicker/dist/bootstrap-clockpicker.min.css" rel="stylesheet"/>
     
     <!-- PLUGINS STYLES-->
     <!-- THEME STYLES-->

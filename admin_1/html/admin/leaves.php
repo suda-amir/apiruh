@@ -42,7 +42,7 @@
                             <label class="col-sm-2 col-form-label">Start:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="new-event-start" type="text" value="">
+                                <input class="form-control" id="" type="text" value="">
                               </div>
                             </div>
                           </div>
@@ -50,7 +50,7 @@
                             <label class="col-sm-2 col-form-label">End:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="new-event-start" type="text" value="">
+                                <input class="form-control" id="" type="text" value="">
                               </div>
                             </div>
                           </div>
@@ -139,7 +139,7 @@
                             <label class="col-sm-2 col-form-label">Start:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="new-event-start" type="text" value="">
+                                <input class="form-control" id="" type="text" value="">
                               </div>
                             </div>
                           </div>
@@ -147,7 +147,7 @@
                             <label class="col-sm-2 col-form-label">End:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="new-event-start" type="text" value="">
+                                <input class="form-control" id="" type="text" value="">
                               </div>
                             </div>
                           </div>
