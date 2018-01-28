@@ -8,7 +8,7 @@
   <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
 
 
-  <body class="fixed-navbar">
+  <body class="fixed-navbar sidebar-mini">
     <div class="page-wrapper">
 
      <?php require_once('../includes/nav_bar.php'); ?>

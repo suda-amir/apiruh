@@ -100,7 +100,7 @@
                       <th>Type</th>
                       <th>Leaves Remaining</th>
                       <th>Status</th>
-                      <th></th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
