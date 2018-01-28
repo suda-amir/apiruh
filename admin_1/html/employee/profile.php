@@ -30,6 +30,9 @@
                   <h5 class="font-strong m-b-10 m-t-10">Frank Cruz</h5>
                   <p class="  m-b-10 m-t-10">Emp ID</p>
                   <div class="m-b-20 text-muted">Web Developer</div>
+                  <button class="btn btn-default labeled"><span class="btn-label"><i class="fa fa-pencil"></i></span>Edit</button>
+
+
                 </div>
               </div>
             </div>
@@ -59,7 +62,7 @@
                             </div>
                           </div>
                           <div class="col-sm-6 form-group">
-                            <label>Employee Code</label>
+                            <label>Employee ID</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
                               <input class="form-control" type="text" placeholder="Name">
@@ -86,14 +89,13 @@
                               <input class="form-control" type="text" placeholder="with icon">
                             </div>
                           </div>
-                          <div class="col-sm-6 form-group">
+                          <div class="col-sm-6 form-group" id="date_1">
                             <label>Date of Birth (D.O.B)</label>
                             <div class="input-group date form_datetime"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
                               <input class="form-control">
                             </div>
-
                           </div>
-                          <div class="col-sm-6 form-group">
+                          <div class="col-sm-6 form-group" id="date_1">
                             <label>Date of Joining (D.O.J)</label>
                             <div class="input-group date form_datetime"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
                               <input class="form-control">
@@ -295,7 +297,15 @@
           });
       });
     </script>
-
+    <script type="text/javascript">
+       $('#date_1 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true
+            });
+    </script>
 
   </body>
 </html>
