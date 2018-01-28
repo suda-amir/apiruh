@@ -47,7 +47,7 @@
                           <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Comapny Name:</label>
                             <div class="col-sm-10">
-                              <select class="form-control" name="comapny">
+                              <select class="form-control" name="comapny_id">
                                 <option>Name</option>
                               </select>
                             </div>
@@ -95,7 +95,9 @@
                           <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Name of Subject:</label>
                             <div class="col-sm-10">
-                              <input type="text" name="subject" class="form-control">
+                              <select class="form-control" name="subject">
+                                <option>Name</option>
+                              </select>
                             </div>
                           </div>
                           <div class="form-group row">

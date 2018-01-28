@@ -37,14 +37,14 @@
                           <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Title:</label>
                             <div class="col-sm-10">
-                              <input class="form-control" id="new-event-title" type="text">
+                              <input class="form-control" id="new-event-title" name="title" type="text">
                             </div>
                           </div>
                           <div class="form-group row" id="date_3">
                             <label class="col-sm-2 col-form-label">Start:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="" type="text" value="">
+                                <input class="form-control" id="" name="start_date" type="text" value="">
                               </div>
                             </div>
                           </div>
@@ -52,7 +52,7 @@
                             <label class="col-sm-2 col-form-label">End:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="" type="text" value="">
+                                <input class="form-control" id="" name="end_date" type="text" value="">
                               </div>
                             </div>
                           </div>
@@ -68,7 +68,7 @@
                           <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Leave Type</label>
                             <div class="col-sm-10">
-                              <select class="form-control" name="leave_typr">
+                              <select class="form-control" name="leave_type">
                                 <option value="Paid">Paid</option>
                                 <option value="Unpaid">Unpaid</option>
                               </select>
