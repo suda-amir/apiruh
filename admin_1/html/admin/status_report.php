@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   
-  <?php require_once('../includes/header.php'); ?>
+  <?php
+      $page_name = "Admin";
+      $page_name_emp = "Status Report";
+      require_once('../includes/header.php');
+  ?>
   <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
 
 
