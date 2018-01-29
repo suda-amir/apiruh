@@ -14,6 +14,9 @@
     <script src="../../../vendors/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
     <script src="../../../vendors/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
     <script src="../../../vendors/clockpicker/dist/bootstrap-clockpicker.min.js" type="text/javascript"></script>
+    <script src="../../../vendors/fullcalendar/dist/fullcalendar.min.js" type="text/javascript"></script>
+    <script src="../../../vendors/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+
    
 
     <!-- CORE SCRIPTS-->
