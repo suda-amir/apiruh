@@ -22,130 +22,21 @@
         </div>
         <div class="page-content fade-in-up">
           <div class="alert" style="padding-left: 0px; margin-bottom: 0px">
-            <a class="btn btn-info" href="#myModal2" data-toggle="modal"><i class="fa fa-plus"></i> Add Event</a></p>
+            <a class="btn btn-info" href="#myModal2" data-toggle="modal"><i class="fa fa-plus"></i> Add Status Report</a></p>
           </div>
            
           <div class="page-content fade-in-up" style="padding-top: 0px; margin-top: 0px">
           <div class="ibox">
             <div class="ibox-body">
-              <div id="calendar"></div>
-              <div class="modal fade" id="new-event-modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                      <form class="modal-content form-horizontal" action="javascript:;">
-                        <div class="modal-header bg-silver-100">
-                          <h4 class="modal-title">New Event</h4>
-                          <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Title:</label>
-                            <div class="col-sm-10">
-                              <input class="form-control" id="new-event-title" type="text">
-                            </div>
-                          </div>
-                         <div class="form-group row" id="date_1">
-                            <label class="col-sm-2 col-form-label">Start:</label>
-                            <div class="col-sm-10">
-                              <div class="input-group datepicker date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="new-event-start" type="text" value="">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">End:</label>
-                            <div class="col-sm-10">
-                              <div class="input-group datepicker date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="new-event-end" type="text">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Color:</label>
-                            <div class="col-sm-10">
-                              <select class="form-control" id="new-event-color">
-                                <option value="bg-blue">Blue</option>
-                                <option value="bg-red">Red</option>
-                                <option value="bg-green">Green</option>
-                                <option value="bg-orange">Orange</option>
-                                <option value="bg-silver">Silver</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <div class="col-sm-10 ml-sm-auto">
-                              <label class="ui-checkbox ui-checkbox-info">
-                                <input id="new-event-allDay" type="checkbox"><span class="input-span"></span>All Day
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-                          <button class="btn btn-info" id="addEventButton" type="submit">Add event</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                  <!-- End New Event Dialog-->
-                  <!-- Event Detail Dialog-->
-                  <div class="modal fade" id="event-modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                      <form class="modal-content form-horizontal" action="javascript:;">
-                        <div class="modal-header bg-silver-100">
-                          <h4 class="modal-title">Edit Event</h4>
-                          <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Title:</label>
-                            <div class="col-sm-10">
-                              <input class="form-control" id="event-title" type="text">
-                            </div>
-                          </div>
-                           <div class="form-group row" id="date_1">
-                            <label class="col-sm-2 col-form-label">Start:</label>
-                            <div class="col-sm-10">
-                              <div class="input-group datepicker date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="event-start" type="text" value="">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">End:</label>
-                            <div class="col-sm-10">
-                              <div class="input-group datepicker date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="event-end" type="text">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Color:</label>
-                            <div class="col-sm-10">
-                              <select class="form-control" id="event-color">
-                                <option value="bg-blue">Blue</option>
-                                <option value="bg-red">Red</option>
-                                <option value="bg-green">Green</option>
-                                <option value="bg-orange">Orange</option>
-                                <option value="bg-silver">Silver</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <div class="col-sm-10 ml-sm-auto">
-                              <label class="ui-checkbox ui-checkbox-info">
-                                <input id="event-allDay" type="checkbox"><span class="input-span"></span>All Day
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button class="btn btn-info" id="editEventButton" type="submit">Save</button>
-                          <button class="btn btn-danger" id="deleteEventButton" type="button" data-dismiss="modal">Delete</button>
-                          <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
+              <div class="row">
+                <div class="col-md-6 col-lg-6">
+                  <div id="calendar"></div>    
+                </div>
+                <div class="col-md-6 col-lg-6">
+                  
+                </div>
+              </div>
+              
             </div>
           </div>
         </div>

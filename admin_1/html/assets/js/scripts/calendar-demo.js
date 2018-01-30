@@ -152,7 +152,7 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay,listWeek'
+                right: 'month'
             },
             events: APP.ASSETS_PATH+'demo/server/events.php',
             editable: true,
