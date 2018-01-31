@@ -153,74 +153,51 @@
     CalendarApp.prototype.init = function() {
         this.enableDrag();
         var $this = this;
-        $this.$calendarObj = $this.$calendar.fullCalendar({
+            $this.$calendarObj = $this.$calendar.fullCalendar({
+            defaultView: 'month',
             header: {
-                left: 'prev,next today',
+                left: 'prev,next',
                 center: 'title',
-                right: 'month'
+                right: 'today',
             },
-            events: APP.ASSETS_PATH+'demo/server/events.php',
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar
-            navLinks: true, // can click day/week names to navigate views
-            eventLimit: true, // allow "more" link when too many events
             selectable: true,
-            drop: function(date) { $this.onDrop($(this), date); },
-            select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
-            eventClick: function(calEvent, jsEvent, view) { $this.updateEvent(calEvent); },
-            // The same can be done for these events
-            eventResize: function(event, delta, revertFunc) { $this.updateEvent(event, revertFunc); },
-            eventDrop: function(event, delta, revertFunc) { $this.updateEvent(event, revertFunc); },
 
-            eventRender: function(event, element, view) {
-                event.allDay = event.allDay == true ? true : false;
-            },
-            events: [
-            {
-                title: 'All Day Event',
-                start: new Date(y, m, 1)
-            },
-            {
-                title: 'Long Event',
-                start: new Date(y, m, d-5),
-                end: new Date(y, m, d-2)
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d-3, 16, 0),
-                allDay: false
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d+4, 16, 0),
-                allDay: false
-            },
-            {
-                title: 'Meeting',
-                start: new Date(y, m, d, 10, 30),
-                allDay: false
-            },
-            {
-                title: 'Lunch',
-                start: new Date(y, m, d, 12, 0),
-                end: new Date(y, m, d, 14, 0),
-                allDay: false
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, d+1, 19, 0),
-                end: new Date(y, m, d+1, 22, 30),
-                allDay: false
-            },
-            {
-                title: 'Click for Google',
-                start: new Date(y, m, 28),
-                end: new Date(y, m, 29),
-                url: 'http://google.com/'
-            }
-        ]
+           events: function(start, end, timezone, callback) {
+              var dateStart = moment(start).format('YYYY-MM-DD');
+              var dateEnd = moment(end).format('YYYY-MM-DD');
+
+              //var userId = '<?php echo $rows[0]['gibbonPersonID']; ?>';
+              // $.ajax({
+              //         url: 'geteventStaffSingle.php',
+              //         type: 'POST',
+              //         dataType: 'JSON',
+              //         data: {start:dateStart ,end:dateEnd, id:userId},
+              //         success: function(doc) {
+              //             callback(doc);
+              //         }
+              //     });
+            }, 
+            dayClick: function(date, jsEvent, view){     
+            var d = new Date(date);
+            var dated = ("0" + d.getDate()).slice(-2);
+            var m = ("0" + d.getMonth() + 1).slice(-2);
+            var y = d.getFullYear();
+            var dateFinal = y + "-" + m + "-" + dated;
+            $("#report_details").css("display", "block");
+            //var userId = '<?php echo $rows[0]['gibbonPersonID']; ?>';
+                                                     
+                                                        
+            console.log(dateFinal);
+            // $.ajax({     
+            //     url: './callDailyEvents.php',
+            //     type: 'GET',
+            //     data: {dateFinal: dateFinal, userId: userId}
+            // }).done(function(data){
+            //     console.log(data);
+            //     $("#preFetched").css("display","none");
+            //     $('#dailyEventer').html(data);
+            // });
+        },
         });
     }
     
