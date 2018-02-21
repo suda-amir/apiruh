@@ -81,6 +81,10 @@
                     </div>
                   </div>
                   </div>
+                  <div class="form-group">
+                      <label>Email</label>
+                      <input class="form-control required" id="email" type="email" name="email">
+                    </div>
                 </section>
                 <h6>Step 2</h6>
                 <section>
@@ -136,6 +140,10 @@
                   <div class="form-group" id="offr" style="display: block;">
                     <label>Offer Letter</label>
                     <input class="form-control required" id="offer_letter" type="file" name="offer_letter">
+                  </div>
+                   <div class="form-group" id="offr" style="display: block;">
+                    <label>Profile Pic</label>
+                    <input class="form-control required" id="pic" type="file" name="pic">
                   </div>
                 </section>
                 <h6>Step 4</h6>

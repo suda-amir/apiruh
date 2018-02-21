@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2018 at 04:47 PM
+-- Generation Time: Feb 21, 2018 at 12:02 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -47,11 +47,12 @@ CREATE TABLE `employee` (
   `name` varchar(500) DEFAULT NULL,
   `nat_emp` varchar(100) DEFAULT NULL,
   `personal_no` varchar(50) DEFAULT NULL,
+  `email` varchar(256) NOT NULL,
   `dob` varchar(50) DEFAULT NULL,
   `doj` varchar(50) DEFAULT NULL,
   `design` varchar(200) DEFAULT NULL,
   `pan_no` varchar(10) DEFAULT NULL,
-  `aadhar_no` int(12) DEFAULT NULL,
+  `aadhar_no` varchar(20) DEFAULT NULL,
   `perm_addr` varchar(5000) DEFAULT NULL,
   `contct_det` varchar(100) DEFAULT NULL,
   `emr_cntct_per` varchar(200) DEFAULT NULL,
@@ -60,7 +61,8 @@ CREATE TABLE `employee` (
   `qualifications` varchar(500) DEFAULT NULL,
   `supprt_docs` varchar(1000) DEFAULT NULL,
   `serv_agr` varchar(500) DEFAULT NULL,
-  `offr_letter` varchar(500) DEFAULT NULL
+  `offr_letter` varchar(500) DEFAULT NULL,
+  `emp_pic` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
