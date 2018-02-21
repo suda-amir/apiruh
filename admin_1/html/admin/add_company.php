@@ -22,11 +22,11 @@
         
          <!-- START PAGE CONTENT-->
          <div class="page-heading">
-          <h1 class="page-title">Add Employee Profile</h1>
+          <h1 class="page-title">Add Company</h1>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Employee</li>
-            <li class="breadcrumb-item active">Add Employee</li>
+            <li class="breadcrumb-item active">Company</li>
+            <li class="breadcrumb-item active">Add Company</li>
 
           </ol>
         </div>
@@ -36,35 +36,18 @@
           
           <div class="ibox">
             <div class="ibox-head">
-              <div class="ibox-title">Add Employee</div>
+              <div class="ibox-title">Add Company</div>
             </div>
             <div class="ibox-body">
               <form id="form-wizard" action="adding_emp.php" method="POST" enctype="multipart/form-data" novalidate="novalidate">
                 <h6>Step 1</h6>
                 <section>
-                  <h3>Employee Details</h3>
+                  <h3>Company Details</h3>
                   
-                 <div class="row">
-                   <div class="col-lg-6 col-md-12">
                     <div class="form-group">
                       <label>Name</label>
                       <input class="form-control required" id="name" type="text" name="name">
                     </div>
-                    <div class="form-group">
-                      <label>Nature of Employment</label>
-                      <select class="form-control required" name="noe" id="noe">
-                        <option value="Employee">Employee</option>
-                        <option value="Contract">Contract</option>
-                      </select>
-                    </div>
-                   <div class="form-group" id="date_3">
-                    <label>Date of Birth</label>
-                      <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                        <input class="form-control required" id="" name="dob" type="text" value="">
-                      </div>
-                  </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12">
                     <div class="form-group" id="date_4">
                     <label>Date of Joining</label>
                       <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
@@ -72,70 +55,37 @@
                       </div>
                   </div>
                     <div class="form-group">
-                      <label>Designation</label>
-                      <input class="form-control required" id="designation" type="text" name="designation">
+                      <label>Client Manager</label>
+                      <select class="form-control required" name="inc" id="inc">
+                        <option>Populate Emp Names here </option>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label>Contact Details</label>
                       <input class="form-control required" id="contact" type="number" name="contact">
                     </div>
-                  </div>
-                  </div>
                 </section>
                 <h6>Step 2</h6>
                 <section>
-                  <h3>Personal Details</h3>
-                  <div class="row">
-                  <div class="col-md-6">
+                  <h3>Additional Details</h3>
                     <div class="form-group">
                     <label>Permanent Address</label>
                     <textarea class="form-control" rows="4" required="" name="addr"></textarea>
                   </div>
                   <div class="form-group">
-                    <label>PAN No.</label>
+                    <label>Reporting Person</label>
                     <input class="form-control required" id="pan" type="text" name="pan">
                   </div>
                   <div class="form-group">
-                    <label>Aadhar Number</label>
+                    <label>Client POC</label>
                     <input class="form-control required" id="aadhar" type="text" name="aadhar">
                   </div>  
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                    <label>Emergency Contact Person</label>
-                    <input class="form-control required" id="ecp" type="text" name="ecp">
-                  </div>
-                  <div class="form-group">
-                    <label>Emergency Contact Number</label>
-                    <input class="form-control required" id="ecm" type="text" name="ecm">
-                  </div>
-                  <div class="form-group">
-                    <label>Blood Group</label>
-                    <input class="form-control required" id="blood" type="text" name="blood">
-                  </div>  
-                  </div>
-                  </div>
-                  
                 </section>
                 <h6>Details</h6>
                 <section>
-                  
-                  <div class="form-group">
-                    <label>Qualifications</label>
-                    <input class="form-control required" id="qualifications" type="text" name="qualifications">
-                  </div>
-
-                  <div class="form-group">
-                    <label>Upload Supporting Documents</label>
-                    <input class="form-control required" id="qual_docs" type="file" name="qual_docs">
-                  </div>
                   <div class="form-group" id="service" style="display: none;">
                     <label>Service Agreement</label>
                     <input class="form-control required" id="service_aggr" type="file" name="service_aggr">
-                  </div>
-                  <div class="form-group" id="offr" style="display: block;">
-                    <label>Offer Letter</label>
-                    <input class="form-control required" id="offer_letter" type="file" name="offer_letter">
                   </div>
                 </section>
                 <h6>Step 4</h6>
@@ -144,7 +94,6 @@
                   <label class="ui-checkbox ui-checkbox-success">
                     <input class="required" id="acceptTerms" type="checkbox" name="acceptTerms"><span class="input-span"></span>I agree with the Terms and Conditions.
                   </label>
-
                 </section>
               </form>
             </div>
@@ -203,13 +152,6 @@
    
     <script type="text/javascript">
       $(document).ready(function(){
-       $('#date_3 .input-group.date').datepicker({
-              todayBtn: "linked",
-              keyboardNavigation: false,
-              forceParse: false,
-              calendarWeeks: true,
-              autoclose: true
-            });
        $('#date_4 .input-group.date').datepicker({
               todayBtn: "linked",
               keyboardNavigation: false,
