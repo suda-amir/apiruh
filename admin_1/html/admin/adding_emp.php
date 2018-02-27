@@ -18,11 +18,14 @@ $ecm = $_POST['ecm'];
 $blood = $_POST['blood'];
 $qualifications = $_POST['qualifications'];
 $qual_docs = $_POST['qual_docs'];
-$target_dir = "uploads/";
+$target_dir = 'employee/'.$name;
 $offer = $target_dir . basename($_FILES["offer_letter"]["name"]);
 $service_aggr = $target_dir . basename($_FILES["service_aggr"]["name"]);
 $pic = $target_dir . basename($_FILES["pic"]["name"]);
 
+if (!file_exists('employee/'.$name)) {
+    mkdir('employee/'.$name, 0777, true);
+}
 
 $stmt1 = $connection->prepare("SELECT * FROM employee WHERE 1 ORDER DESC");
 $stmt1->execute();
