@@ -42,6 +42,15 @@
                               <input class="form-control" id="new-event-title" name="title" type="text">
                             </div>
                           </div>
+                          <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Type:</label>
+                            <div class="col-sm-10">
+                              <select class="form-control" name="type">
+                                <option value="Public Holiday">Public Holiday</option>
+                                <option value="Admin Defined">Admin Defined</option>
+                              </select>
+                            </div>
+                          </div>
                           <div class="form-group row" id="date_1">
                             <label class="col-sm-2 col-form-label">Start:</label>
                             <div class="col-sm-10">

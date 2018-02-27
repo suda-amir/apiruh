@@ -122,8 +122,7 @@
                   
                 </section>
                 <h6>Details</h6>
-                <section>
-                  
+                <section>  
                   <div class="form-group">
                     <label>Qualifications</label>
                     <input class="form-control required" id="qualifications" type="text" name="qualifications">
@@ -225,6 +224,12 @@
               calendarWeeks: true,
               autoclose: true
             });
+       $("#finish").click(function(){
+        console.log("Reached").
+        $("form").submit(function(){
+          alert("Submitted");
+        }); 
+    });
       });
     </script>
      <!-- PAGE LEVEL SCRIPTS-->
@@ -255,14 +260,6 @@
       
               // Start validation; Prevent going forward if false
               return form.valid();
-          },
-          onFinishing: function (event, currentIndex) {
-              var form = $(this);
-              form.validate().settings.ignore = ":disabled";
-              return form.valid();
-          },
-          onFinished: function (event, currentIndex) {
-              toastr.success('Emplyee Added Successfully!');
           }
         }).validate({
           errorPlacement: function errorPlacement(error, element) { error.insertAfter(element); },
@@ -276,6 +273,9 @@
           unhighlight:function(e){$(e).closest(".form-group").removeClass("has-error")},
         });
       })
+    </script>
+    <script type="text/javascript">
+
     </script>
 
 

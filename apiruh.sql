@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2018 at 12:02 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Feb 27, 2018 at 09:37 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -65,6 +65,13 @@ CREATE TABLE `employee` (
   `emp_pic` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`emp_id`, `name`, `nat_emp`, `personal_no`, `email`, `dob`, `doj`, `design`, `pan_no`, `aadhar_no`, `perm_addr`, `contct_det`, `emr_cntct_per`, `emr_cntct_no`, `blood_grp`, `qualifications`, `supprt_docs`, `serv_agr`, `offr_letter`, `emp_pic`) VALUES
+('EMP01011972001', 'DEFAULT', 'ADMIN', NULL, 'sudarshan@amirineni.co.in', '09-11-1997', '01-02-2018', 'Master Admin', NULL, NULL, NULL, NULL, NULL, NULL, 'O+ve', 'Admin', NULL, NULL, NULL, '');
+
 -- --------------------------------------------------------
 
 --
@@ -75,7 +82,8 @@ CREATE TABLE `emp_leaves` (
   `emp_id` text NOT NULL,
   `paid_leaves` int(3) NOT NULL,
   `unpaid_leaves` int(3) NOT NULL,
-  `earned_leaves` int(3) NOT NULL
+  `earned_leaves` int(3) NOT NULL,
+  `counter` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
@@ -100,6 +108,7 @@ CREATE TABLE `holidays` (
 
 CREATE TABLE `leaves` (
   `leave_id` int(11) NOT NULL,
+  `emp_id` varchar(256) NOT NULL,
   `title` varchar(500) NOT NULL,
   `start` date NOT NULL,
   `end` date NOT NULL,
@@ -160,6 +169,12 @@ CREATE TABLE `status_report` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD UNIQUE KEY `emp_id` (`emp_id`);
 
 --
 -- Indexes for table `leaves`

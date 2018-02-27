@@ -1,6 +1,6 @@
 <?php
 
-require_once('../config.php');
+require_once('config.php');
 session_start();
 
 
@@ -24,7 +24,7 @@ $service_aggr = $target_dir . basename($_FILES["service_aggr"]["name"]);
 $pic = $target_dir . basename($_FILES["pic"]["name"]);
 
 
-$stmt1 = $connection->prepare("SELECT * FROM employee WHERE 1 ORDER DESC")
+$stmt1 = $connection->prepare("SELECT * FROM employee WHERE 1 ORDER DESC");
 $stmt1->execute();
 $data = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 $id = $data[0]['emp_id'];
@@ -36,7 +36,7 @@ if($noe == "Employee"){
 }else{
 	$emp_id ="CONT".$doj."$newstring";
 }
-
+var_dump($emp_id);
 try{
 	$stmt = $connection->prepare("INSERT INTO `employee`(`emp_id`, `name`, `nat_emp`, `personal_no`, `email`, `dob`, `doj`, `design`, `pan_no`, `aadhar_no`, `perm_addr`, `contct_det`, `emr_cntct_per`, `emr_cntct_no`, `blood_grp`, `qualifications`, `supprt_docs`, `serv_agr`, `offr_letter`, `emp_pic`) VALUES (:emp_id, :name, :noe, contact, :email, :dob, :doj, :designation, :pan, :aadhar, :addr, :contact, :ecp, :ecm, :blood, :qualifications, :qual_docs, :service_aggr, :offer,:pic)");
 
@@ -67,7 +67,7 @@ catch(PDOException $ae)
 	echo $ae->getMessage();
 }
 
-header("location: );
+header("location: ");
 
 
 ?>

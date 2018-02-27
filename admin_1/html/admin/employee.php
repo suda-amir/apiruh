@@ -32,7 +32,7 @@
         </div>
         <div class="page-content fade-in-up">
           <div class="alert" style="padding-left: 0px; margin-bottom: 0px">
-            <a class="btn btn-info" href="#myModal2" data-toggle="modal"><i class="fa fa-plus"></i> Add Employee</a></p>
+            <a class="btn btn-info" href="add_employee" data-toggle="modal"><i class="fa fa-plus"></i> Add Employee</a></p>
           </div>
           <div class="page-content fade-in-up" style="padding-top: 0px; margin-top: 0px">
           <div class="row products-board">
