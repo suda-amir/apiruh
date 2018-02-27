@@ -6,7 +6,6 @@
       require_once('../includes/header.php');
       require_once('functions.php');
       $emp = get_emp_details();
-
   ?>
   <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
    <link href="../assets/css/pages/ecommerce.css" rel="stylesheet"/>

@@ -4,6 +4,8 @@
 <?php
       $page_name_emp = "Leaves";
       require_once('../includes/header.php');
+      require_once('functions.php');
+      $leaves = get_leaves_data();
   ?>  
   <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
 
@@ -105,18 +107,44 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <?php
+                      foreach ($leaves as $key) {
+                        $emp_name = get_emp_data($key->emp_id);
+                        foreach ($emp_name as $key1) {
+                          $name = $key1->name;
+                        }
+                        $start = date("d M Y", strtotime($key->start));
+                        $end = date("d M Y", strtotime($key->end));
+                    ?>
                     <tr>
-                      <td>Test</td>
-                      <td>Test</td>
+                      <td><?= $name ?></td>
+                      <td><?php  echo $start." - ".$end ?></td>
+                      <?php
+                        if($key->leave_type == "Paid"){
+                      ?>
                       <td><span class="badge badge-success">Paid</span></td>
-                      <td>Test</td>
-                      <td><span class="badge badge-success">Stock</span></td>
+                      <?php }else{ ?>
+                      <td><span class="badge badge-danger">Un-Paid</span></td>
+                      <?php } ?>
+                      <td><?= $key->paid_leaves ?></td>
+                      <?php
+                        if($key->status == 0){
+                      ?>
+                      <td><span class="badge badge-danger">Pending</span></td>
+                      <?php }else{ ?>
+                      <td><span class="badge badge-success">Complete</span></td>
+                      <?php } ?>
                       <td>
-                        <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-check font-14"></i></button></a>
-                        <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-times font-14"></i></button></a>
-                         <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye font-14"></i></button></a>
+                        <?php
+                        if($key->status == 0){
+                      ?>
+                        <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="Accept"><i class="fa fa-check font-14"></i></button></a>
+                        <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="Reject"><i class="fa fa-times font-14"></i></button></a>
+                        <?php } ?>
+                         <a href="#edit_leaves<?= $key->emp_id ?>" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye font-14"></i></button></a>
                       </td>
                     </tr>
+                    <?php } ?>
                   </tbody>
                 </table>
               </div>
@@ -124,25 +152,35 @@
           </div>
         </div>
         </div>
-        <div class="modal fade" id="edit_leaves" tabindex="-1" role="dialog">
+
+        <?php
+          foreach ($leaves as $key) {
+            $emp_name = get_emp_data($key->emp_id);
+              foreach ($emp_name as $key1) {
+                $name = $key1->name;
+            }
+            $start = date("d M Y", strtotime($key->start));
+            $end = date("d M Y", strtotime($key->end));
+        ?>
+        <div class="modal fade" id="edit_leaves<?= $key->emp_id ?>" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document">
             <form class="modal-content form-horizontal" action="javascript:;">
               <div class="modal-header bg-silver-100">
-                <h4 class="modal-title">View Leave Request</h4>
+                <h4 class="modal-title">Leave Request of <?= $name; ?></h4>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               </div>
               <div class="modal-body">
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Title:</label>
                   <div class="col-sm-10">
-                    <input class="form-control" id="new-event-title" type="text">
+                    <input class="form-control" id="new-event-title" type="text" value="<?= $key->title ?>">
                   </div>
                 </div>
                 <div class="form-group row" id="date_1">
                   <label class="col-sm-2 col-form-label">Start:</label>
                   <div class="col-sm-10">
                     <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                      <input class="form-control" id="" type="text" value="">
+                      <input class="form-control" id="" type="text" value="<?= $start; ?>">
                     </div>
                   </div>
                 </div>
@@ -150,32 +188,32 @@
                   <label class="col-sm-2 col-form-label">End:</label>
                   <div class="col-sm-10">
                     <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                      <input class="form-control" id="" type="text" value="">
+                      <input class="form-control" id="" type="text" value="<?= $end; ?>">
                     </div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Half / Full Day</label>
                   <div class="col-sm-10">
-                    <select class="form-control" name="half_leave">
-                      <option value="Half Day">Half Day</option>
-                      <option value="Full Day">Full Day</option>
+                    <select class="form-control" name="half_leave" id="half_leave<?= $key->emp_id ?>">
+                      <option value="Half Day" <?= $key->day_type == 'Half Day' ? ' selected="selected"' : '';?>>Half Day</option>
+                      <option value="Full Day" <?= $key->day_type == 'Full Day' ? ' selected="selected"' : '';?>>Full Day</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Leave Type</label>
                   <div class="col-sm-10">
-                    <select class="form-control" name="leave_typr">
-                      <option value="Paid">Paid</option>
-                      <option value="Unpaid">Unpaid</option>
+                    <select class="form-control" name="leave_type" id="leave_type<?= $key->emp_id ?>">
+                      <option value="Paid" <?= $key->leave_type == 'Paid' ? ' selected="selected"' : '';?>>Paid</option>
+                      <option value="Unpaid" <?= $key->leave_type == 'Unpaid' ? ' selected="selected"' : '';?>>Unpaid</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Reason</label>
                   <div class="col-sm-10">
-                    <textarea class="form-control" rows="4" name="reason"></textarea>
+                    <textarea class="form-control" rows="4" name="reason"><?= $key->reason ?></textarea>
                   </div>
                 </div>
               </div>
@@ -187,13 +225,9 @@
             </form>
           </div>
         </div>
+        <?php } ?>
         <!-- END PAGE CONTENT-->
-        <footer class="page-footer">
-          <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
-          <div class="pull-right"><a class="link-blue" href="javascript:;"><i class="fa fa-shopping-cart m-r-5"></i>Buy now</a></div>2017 © <b>Adminca</b> - Save your time, choose the best
-        </footer>
-                <?php require_once('../includes/footer.php'); ?>
-
+        <?php require_once('../includes/footer.php'); ?>
       </div>
     </div>
 
