@@ -15,6 +15,8 @@
     <link href="../../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet"/>
     <link href="../../../vendors/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet"/>
     <link href="../../../vendors/fullcalendar/dist/fullcalendar.print.min.css" rel="stylesheet" media="print"/>
+        <script src="../../../vendors/jquery/dist/jquery.min.js" type="text/javascript"></script>
+
      
     <!-- PLUGINS STYLES-->
     <!-- THEME STYLES-->

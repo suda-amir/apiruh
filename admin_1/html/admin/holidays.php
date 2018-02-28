@@ -5,6 +5,9 @@
       $page_name = "Admin";
       $page_name_emp = "Holidays";
       require_once('../includes/header.php');
+      require_once('functions.php');
+      $holidays = get_holidays_data();
+
   ?>
   <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
 
@@ -30,7 +33,7 @@
           </div>
            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
-                      <form class="modal-content form-horizontal" action="javascript:;">
+                      <form class="modal-content form-horizontal" action="add_holidays.php" method="POST">
                         <div class="modal-header bg-silver-100">
                           <h4 class="modal-title">Holiday</h4>
                           <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -89,20 +92,28 @@
                   <thead>
                     <tr>
                       <th>Title</th>
-                      <th>Day</th>
-                      <th>Month</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Type</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php
+                      foreach ($holidays as $key) {
+                        $start = date("d M Y", strtotime($key->hol_start));
+                        $end = date("d M Y", strtotime($key->hol_end));
+                    ?>
                     <tr>
-                      <td>Test</td>
-                      <td>Test</td>
-                      <td>Test</td>
+                      <td><?= $key->hol_title ?></td>
+                      <td><?= $start ?></td>
+                      <td><?= $end ?></td>
+                      <td><?= $key->hol_type ?></td>
                       <td>
-                         <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-pencil font-14"></i></button></a>
+                         <a href="#edit_leaves<?= $key->hol_id ?>" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-pencil font-14"></i></button></a>
                       </td>
                     </tr>
+                    <?php } ?>
                   </tbody>
                 </table>
               </div>
@@ -110,9 +121,14 @@
           </div>
         </div>
         </div>
-        <div class="modal fade" id="edit_leaves" tabindex="-1" role="dialog">
+                  <?php
+                      foreach ($holidays as $key) {
+                        $start = date("d M Y", strtotime($key->hol_start));
+                        $end = date("d M Y", strtotime($key->hol_end));
+                    ?>
+                  <div class="modal fade" id="edit_leaves<?= $key->hol_id ?>" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
-                      <form class="modal-content form-horizontal" action="javascript:;">
+                      <form class="modal-content form-horizontal" action="update_holidays.php" method="POST">
                         <div class="modal-header bg-silver-100">
                           <h4 class="modal-title">Update Holiday</h4>
                           <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -121,14 +137,24 @@
                           <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Title:</label>
                             <div class="col-sm-10">
-                              <input class="form-control" id="new-event-title" name="title" type="text">
+                              <input class="form-control" id="new-event-title" name="title" type="text" value="<?= $key->hol_title ?>">
+                              <input name="id" type="hidden" value="<?= $key->hol_id ?>">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Type:</label>
+                            <div class="col-sm-10">
+                              <select class="form-control" name="type">
+                                <option value="Public Holiday" <?= $key->hol_type == 'Public Holiday' ? ' selected="selected"' : '';?>>Public Holiday</option>
+                                <option value="Admin Defined" <?= $key->hol_type == 'Admin Defined' ? ' selected="selected"' : '';?>>Admin Defined</option>
+                              </select>
                             </div>
                           </div>
                           <div class="form-group row" id="date_3">
                             <label class="col-sm-2 col-form-label">Start:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="" type="text" value="" name="start">
+                                <input class="form-control" id="" type="text" value="<?= $start ?>" name="start">
                               </div>
                             </div>
                           </div>
@@ -136,26 +162,39 @@
                             <label class="col-sm-2 col-form-label">End:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                <input class="form-control" id="" type="text" value="" name="end">
+                                <input class="form-control" id="" type="text" value="<?= $end ?>" name="end">
                               </div>
                             </div>
                           </div>
                           <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Reason</label>
                             <div class="col-sm-10">
-                              <textarea class="form-control" rows="4" name="reason"></textarea>
+                              <textarea class="form-control" rows="4" name="reason"><?= $key->hol_desc ?></textarea>
                             </div>
                           </div>
                         </div>
                         <div class="modal-footer">
-                          <button class="btn btn-danger" type="button" style="float: left;">Delete</button>
+                          <a class="btn btn-danger" id="delete<?= $key->hol_id ?>" style="float: left; color: #fff">Delete</a>
                           <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-
-                          <button class="btn btn-info" type="button" type="submit">Update</button>                         
+                          <button class="btn btn-info" type="submit">Update</button>                         
                         </div>
                       </form>
                     </div>
                   </div>
+                  <script type="text/javascript">
+                    $("#delete<?= $key->hol_id ?>").click(function(){
+                      var hol_id = <?= $key->hol_id ?>;
+                      $.ajax({
+                        type: "POST",
+                        url: "delete_holiday.php",
+                        data: {id: hol_id},
+                        success: function(msg) {
+                          location.reload();
+                        }
+                      });       
+                    });
+                  </script>
+                  <?php } ?>
         <!-- END PAGE CONTENT-->
         <footer class="page-footer">
           <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
@@ -210,28 +249,32 @@
               keyboardNavigation: false,
               forceParse: false,
               calendarWeeks: true,
-              autoclose: true
+              autoclose: true,
+              format: 'dd M yyyy'
             });
             $('#date_2 .input-group.date').datepicker({
               todayBtn: "linked",
               keyboardNavigation: false,
               forceParse: false,
               calendarWeeks: true,
-              autoclose: true
+              autoclose: true,
+              format: 'dd M yyyy'
             });
             $('#date_3 .input-group.date').datepicker({
               todayBtn: "linked",
               keyboardNavigation: false,
               forceParse: false,
               calendarWeeks: true,
-              autoclose: true
+              autoclose: true,
+              format: 'dd M yyyy'
             });
             $('#date_4 .input-group.date').datepicker({
               todayBtn: "linked",
               keyboardNavigation: false,
               forceParse: false,
               calendarWeeks: true,
-              autoclose: true
+              autoclose: true,
+              format: 'dd M yyyy'
             });
 
           });

@@ -49,4 +49,27 @@ function get_each_leave_data($id){
 		echo '{"error": {"text":'. $e->getMessage() .'}}';
 	}
 }
+function get_holidays_data(){
+	global $connection;
+	try {
+		$stmt = $connection->prepare("SELECT * FROM `holidays` WHERE 1");
+		$stmt->execute();
+		$data = $stmt->fetchAll(PDO::FETCH_OBJ);
+		return ($data);
+	} catch (PDOException $e) {
+		echo '{"error": {"text":'. $e->getMessage() .'}}';
+	}
+}
+function get_each_holidays_data($id){
+	global $connection;
+	try {
+		$stmt = $connection->prepare("SELECT * FROM `holidays` WHERE hol_id = :id");
+		$stmt->bindParam("id", $id,PDO::PARAM_STR);
+		$stmt->execute();
+		$data = $stmt->fetchAll(PDO::FETCH_OBJ);
+		return ($data);
+	} catch (PDOException $e) {
+		echo '{"error": {"text":'. $e->getMessage() .'}}';
+	}
+}
 ?>
