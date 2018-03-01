@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-  
 <?php
       $page_name_emp = "Calendar";
       require_once('../includes/header.php');
@@ -139,7 +138,8 @@
                   <div id="calendar"></div>    
                 </div>
                 <div class="col-md-6 col-lg-6" style="display: none" id="report_details">
-                  <div class="form-group row" id="date_1">
+                        <form action="edit_statusrp.php" method="POST"></form>
+                          <div class="form-group row" id="date_2">
                             <label class="col-sm-2 col-form-label">Date:</label>
                             <div class="col-sm-10">
                               <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
@@ -230,6 +230,8 @@
                               <textarea class="form-control" rows="4" name="comments"></textarea>
                             </div>
                           </div>
+                          <button class="btn btn-info" type="submit">Update</button>
+                          <a class="btn btn-info" id="edit_event">Edit Status Report</a>
                 </div>
               </div>
               
@@ -283,6 +285,46 @@
          $(document).ready(function(){
           $("#report_details :input").attr("disabled", true);
          });
+
+          $("#edit_event").click(function(){
+            $("#report_details :input").attr("disabled", false);
+          });
        </script>
+        <script type="text/javascript">
+          $(document).ready(function(){
+           $('#date_1 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true,
+              format: 'dd M yyyy'
+            });
+           $('#date_4 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true,
+              format: 'dd M yyyy'
+            });
+           $('#date_3 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true,
+              format: 'dd M yyyy'
+            });
+           $('#date_2 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true,
+              format: 'dd M yyyy'
+            });
+          });
+        </script>
   </body>
 </html>

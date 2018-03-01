@@ -178,25 +178,28 @@
               //     });
             }, 
             dayClick: function(date, jsEvent, view){     
-            var d = new Date(date);
-            var dated = ("0" + d.getDate()).slice(-2);
-            var m = ("0" + d.getMonth() + 1).slice(-2);
-            var y = d.getFullYear();
-            var dateFinal = y + "-" + m + "-" + dated;
-            $("#report_details").css("display", "block");
-            //var userId = '<?php echo $rows[0]['gibbonPersonID']; ?>';
-                                                     
-                                                        
+           var d = new Date(date);
+                var dated = ("0" + d.getDate()).slice(-2);
+                var m =  d.getMonth();
+                var month =  parseInt(m)+1;
+                month = ("0"+month).slice(-2);
+                var y = d.getFullYear();
+                var dateFinal = y + "-" + month + "-" + dated;
+                var userId = "EMP01011972001";
             console.log(dateFinal);
-            // $.ajax({     
-            //     url: './callDailyEvents.php',
-            //     type: 'GET',
-            //     data: {dateFinal: dateFinal, userId: userId}
-            // }).done(function(data){
-            //     console.log(data);
-            //     $("#preFetched").css("display","none");
-            //     $('#dailyEventer').html(data);
-            // });
+
+            $("#report_details").css("display", "block");
+            var userId = 'EMP01011972001';                                    
+            $.ajax({     
+                url: 'callDailyEvents.php',
+                type: 'POST',
+                data: {date: dateFinal, id: userId}
+            }).done(function(data){
+                console.log("Reached");
+                console.log(data['client_id']);
+
+                //$('#dailyEventer').html(data);
+            });
         },
         });
     }
