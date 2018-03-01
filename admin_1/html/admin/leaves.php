@@ -31,7 +31,7 @@
           </div>
            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
-              <form class="modal-content form-horizontal" action="javascript:;">
+              <form class="modal-content form-horizontal" action="add_leaves.php" method="POST">
                 <div class="modal-header bg-silver-100">
                   <h4 class="modal-title">Leave Request</h4>
                   <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -101,7 +101,7 @@
                       <th>Employee Name</th>
                       <th>Leave Dates</th>
                       <th>Type</th>
-                      <th>Leaves Remaining</th>
+                      <th>Paid Leaves Remaining</th>
                       <th>Status</th>
                       <th>Actions</th>
                     </tr>
@@ -130,18 +130,20 @@
                       <?php
                         if($key->status == 0){
                       ?>
-                      <td><span class="badge badge-danger">Pending</span></td>
-                      <?php }else{ ?>
-                      <td><span class="badge badge-success">Complete</span></td>
+                      <td><span class="badge badge-default">Pending</span></td>
+                      <?php }elseif($key->status == 1){ ?>
+                      <td><span class="badge badge-success">Accepted</span></td>
+                      <?php }elseif ($key->status == 2) { ?>
+                      <td><span class="badge badge-danger">Rejected</span></td>
                       <?php } ?>
                       <td>
                         <?php
                         if($key->status == 0){
                       ?>
-                        <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="Accept"><i class="fa fa-check font-14"></i></button></a>
-                        <a href="#edit_leaves" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="Reject"><i class="fa fa-times font-14"></i></button></a>
+                        <a><button class="btn btn-default btn-sm btn-flat" id="accept<?= $key->leave_id ?>" data-toggle="tooltip" data-original-title="Accept"><i class="fa fa-check font-14"></i></button></a>
+                        <a><button class="btn btn-default btn-sm btn-flat" id="reject<?= $key->leave_id ?>" data-toggle="tooltip" data-original-title="Reject"><i class="fa fa-times font-14"></i></button></a>
                         <?php } ?>
-                         <a href="#edit_leaves<?= $key->emp_id ?>" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye font-14"></i></button></a>
+                         <a href="#edit_leaves<?= $key->leave_id ?>" data-toggle="modal"><button class="btn btn-default btn-sm btn-flat" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye font-14"></i></button></a>
                       </td>
                     </tr>
                     <?php } ?>
@@ -162,9 +164,9 @@
             $start = date("d M Y", strtotime($key->start));
             $end = date("d M Y", strtotime($key->end));
         ?>
-        <div class="modal fade" id="edit_leaves<?= $key->emp_id ?>" tabindex="-1" role="dialog">
+        <div class="modal fade" id="edit_leaves<?= $key->leave_id ?>" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document">
-            <form class="modal-content form-horizontal" action="javascript:;">
+            <form class="modal-content form-horizontal" action="update_leaves.php" method="POST">
               <div class="modal-header bg-silver-100">
                 <h4 class="modal-title">Leave Request of <?= $name; ?></h4>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -173,14 +175,15 @@
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Title:</label>
                   <div class="col-sm-10">
-                    <input class="form-control" id="new-event-title" type="text" value="<?= $key->title ?>">
+                    <input class="form-control" id="new-event-title" name="title" type="text" value="<?= $key->title ?>">
+                    <input class="form-control" name="id" type="hidden" value="<?= $key->leave_id ?>">
                   </div>
                 </div>
                 <div class="form-group row" id="date_1">
                   <label class="col-sm-2 col-form-label">Start:</label>
                   <div class="col-sm-10">
                     <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                      <input class="form-control" id="" type="text" value="<?= $start; ?>">
+                      <input class="form-control" id="" type="text" name="start_date" value="<?= $start; ?>">
                     </div>
                   </div>
                 </div>
@@ -188,7 +191,7 @@
                   <label class="col-sm-2 col-form-label">End:</label>
                   <div class="col-sm-10">
                     <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                      <input class="form-control" id="" type="text" value="<?= $end; ?>">
+                      <input class="form-control" id="" type="text" name="end_date" value="<?= $end; ?>">
                     </div>
                   </div>
                 </div>
@@ -219,12 +222,67 @@
               </div>
               <div class="modal-footer">
                 <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-                <a class="btn btn-info" id="accept_leave">Accept</a>
-                <a class="btn btn-info" id="reject_leave">Reject</a>
+                <?php 
+                  if($key->status == 0){
+                ?>
+                <button class="btn btn-info" type="submit">Update</button>
+                <a class="btn btn-info" id="accept_leave<?= $key->leave_id ?>">Accept</a>
+                <a class="btn btn-info" id="reject_leave<?= $key->leave_id ?>">Reject</a>
+                <?php } ?>
               </div>
             </form>
           </div>
         </div>
+        <script type="text/javascript">
+          $("#accept_leave<?= $key->leave_id ?>").click(function(){
+            var leave_id = <?= $key->leave_id ?>;
+            $.ajax({
+              type: "POST",
+              url: "accept_leave.php",
+              data: {id: leave_id},
+              success: function(msg) {
+                if(msg == '1'){
+                  alert("Employee doesnt have sufficient Paid Leaves");
+                }
+              }
+            });       
+          });
+          $("#reject_leave<?= $key->leave_id ?>").click(function(){
+            var leave_id = <?= $key->leave_id ?>;
+            $.ajax({
+              type: "POST",
+              url: "reject_leave.php",
+              data: {id: leave_id},
+              success: function(msg) {
+                location.reload();
+              }
+            });       
+          });
+           $("#accept<?= $key->leave_id ?>").click(function(){
+            var leave_id = <?= $key->leave_id ?>;
+            $.ajax({
+              type: "POST",
+              url: "accept_leave.php",
+              data: {id: leave_id},
+              success: function(msg) {
+                if(msg == '1'){
+                  alert("Employee doesnt have sufficient Paid Leaves");
+                }
+              }
+            });       
+          });
+            $("#reject<?= $key->leave_id ?>").click(function(){
+            var leave_id = <?= $key->leave_id ?>;
+            $.ajax({
+              type: "POST",
+              url: "reject_leave.php",
+              data: {id: leave_id},
+              success: function(msg) {
+                location.reload();
+              }
+            });       
+          });
+        </script>
         <?php } ?>
         <!-- END PAGE CONTENT-->
         <?php require_once('../includes/footer.php'); ?>
@@ -275,28 +333,32 @@
               keyboardNavigation: false,
               forceParse: false,
               calendarWeeks: true,
-              autoclose: true
+              autoclose: true,
+              format: 'dd M yyyy'
             });
            $('#date_4 .input-group.date').datepicker({
               todayBtn: "linked",
               keyboardNavigation: false,
               forceParse: false,
               calendarWeeks: true,
-              autoclose: true
+              autoclose: true,
+              format: 'dd M yyyy'
             });
            $('#date_3 .input-group.date').datepicker({
               todayBtn: "linked",
               keyboardNavigation: false,
               forceParse: false,
               calendarWeeks: true,
-              autoclose: true
+              autoclose: true,
+              format: 'dd M yyyy'
             });
            $('#date_2 .input-group.date').datepicker({
               todayBtn: "linked",
               keyboardNavigation: false,
               forceParse: false,
               calendarWeeks: true,
-              autoclose: true
+              autoclose: true,
+              format: 'dd M yyyy'
             });
           });
         </script>

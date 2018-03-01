@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2018 at 09:37 AM
+-- Generation Time: Mar 01, 2018 at 08:04 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -79,12 +79,19 @@ INSERT INTO `employee` (`emp_id`, `name`, `nat_emp`, `personal_no`, `email`, `do
 --
 
 CREATE TABLE `emp_leaves` (
-  `emp_id` text NOT NULL,
+  `emp_id` varchar(256) NOT NULL,
   `paid_leaves` int(3) NOT NULL,
   `unpaid_leaves` int(3) NOT NULL,
   `earned_leaves` int(3) NOT NULL,
   `counter` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+--
+-- Dumping data for table `emp_leaves`
+--
+
+INSERT INTO `emp_leaves` (`emp_id`, `paid_leaves`, `unpaid_leaves`, `earned_leaves`, `counter`) VALUES
+('EMP01011972001', 7, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -93,12 +100,21 @@ CREATE TABLE `emp_leaves` (
 --
 
 CREATE TABLE `holidays` (
+  `hol_id` int(20) NOT NULL,
+  `hol_title` varchar(256) NOT NULL,
   `hol_type` text NOT NULL,
-  `hol_date` date NOT NULL,
   `hol_desc` text NOT NULL,
   `hol_start` date NOT NULL,
   `hol_end` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+--
+-- Dumping data for table `holidays`
+--
+
+INSERT INTO `holidays` (`hol_id`, `hol_title`, `hol_type`, `hol_desc`, `hol_start`, `hol_end`) VALUES
+(2, 'TEst', 'Public Holiday', 'waefsgrd', '2018-02-20', '2018-02-23'),
+(3, 'Test2', 'Admin Defined', 'Officia illo at consequatur Numquam enim omnis', '2018-03-01', '2018-03-10');
 
 -- --------------------------------------------------------
 
@@ -108,6 +124,7 @@ CREATE TABLE `holidays` (
 
 CREATE TABLE `leaves` (
   `leave_id` int(11) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT '0',
   `emp_id` varchar(256) NOT NULL,
   `title` varchar(500) NOT NULL,
   `start` date NOT NULL,
@@ -116,6 +133,16 @@ CREATE TABLE `leaves` (
   `leave_type` varchar(100) NOT NULL,
   `reason` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+--
+-- Dumping data for table `leaves`
+--
+
+INSERT INTO `leaves` (`leave_id`, `status`, `emp_id`, `title`, `start`, `end`, `day_type`, `leave_type`, `reason`) VALUES
+(1, 0, 'EMP01011972001', 'Test', '2018-02-01', '2018-02-10', 'Half Day', 'Unpaid', 'Reason test'),
+(2, 0, 'EMP01011972001', 'Dolor et est consectetur veniam est aspernatur eiusmod adipisicing commodi autem Nam', '2009-10-12', '1976-10-06', 'Full Day', 'Unpaid', 'Est harum ullam exercitation ullamco harum et placeat consectetur voluptates'),
+(3, 1, 'EMP01011972001', 'Testing', '2018-02-01', '2018-02-24', 'Full Day', 'Paid', 'dsvxfcgn'),
+(4, 0, 'EMP01011972001', 'Final Leave', '2018-03-01', '2018-04-07', 'Half Day', 'Unpaid', 'Vacation');
 
 -- --------------------------------------------------------
 
@@ -177,6 +204,18 @@ ALTER TABLE `employee`
   ADD UNIQUE KEY `emp_id` (`emp_id`);
 
 --
+-- Indexes for table `emp_leaves`
+--
+ALTER TABLE `emp_leaves`
+  ADD PRIMARY KEY (`emp_id`);
+
+--
+-- Indexes for table `holidays`
+--
+ALTER TABLE `holidays`
+  ADD PRIMARY KEY (`hol_id`);
+
+--
 -- Indexes for table `leaves`
 --
 ALTER TABLE `leaves`
@@ -187,10 +226,16 @@ ALTER TABLE `leaves`
 --
 
 --
+-- AUTO_INCREMENT for table `holidays`
+--
+ALTER TABLE `holidays`
+  MODIFY `hol_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
