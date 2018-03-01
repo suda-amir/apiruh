@@ -101,43 +101,43 @@
           <ul class="side-menu metismenu">
             <li>
               <a href="../admin/index">
-                <i class="sidebar-item-icon fa fa-smile-o"></i>
+                <i class="sidebar-item-icon fa fa-th-large"></i>
                 <span class="nav-label">Dashboard</span>
               </a>
             </li>
             <li>
               <a href="../admin/status_report">
-                <i class="sidebar-item-icon fa fa-smile-o"></i>
+                <i class="sidebar-item-icon fa fa-edit"></i>
                 <span class="nav-label">Status Reports</span>
               </a>
             </li>
             <li>
               <a href="../admin/employee">
-                <i class="sidebar-item-icon fa fa-smile-o"></i>
+                <i class="sidebar-item-icon fa fa-user-circle-o" style="font-size:15px"></i>
                 <span class="nav-label">Employee</span>
               </a>
             </li>
             <li>
               <a href="../admin/leaves">
-                <i class="sidebar-item-icon fa fa-smile-o"></i>
+                <i class="sidebar-item-icon fa fa-motorcycle"></i>
                 <span class="nav-label">Leaves</span>
               </a>
             </li>
             <li>
               <a href="../admin/holidays">
-                <i class="sidebar-item-icon fa fa-smile-o"></i>
+                <i class="sidebar-item-icon fa fa-umbrella"></i>
                 <span class="nav-label">Holidays</span>
               </a>
             </li>            
             <li>
               <a href="../finance/">
-                <i class="sidebar-item-icon fa fa-smile-o"></i>
+                <i class="sidebar-item-icon fa fa-rupee"></i>
                 <span class="nav-label">Finance</span>
               </a>
             </li>
             <li>
               <a href="../admin/company">
-                <i class="sidebar-item-icon fa fa-smile-o"></i>
+                <i class="sidebar-item-icon fa fa-building-o"></i>
                 <span class="nav-label">Company</span>
               </a>
             </li>
