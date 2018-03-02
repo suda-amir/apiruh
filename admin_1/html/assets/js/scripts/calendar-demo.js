@@ -193,10 +193,15 @@
             $.ajax({     
                 url: 'callDailyEvents.php',
                 type: 'POST',
-                data: {date: dateFinal, id: userId}
-            }).done(function(data){
+                data: {date: dateFinal, id: userId},
+                dataType: 'json',
+                success: function (data) { 
                 console.log("Reached");
-                console.log(data['client_id']);
+                var obj = JSON.parse(data);
+                for(var i = 0; i < obj.length; i++){
+                    console.log(obj[i].client_id);    
+                }
+              }  
 
                 //$('#dailyEventer').html(data);
             });

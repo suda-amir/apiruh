@@ -10,7 +10,8 @@ try{
 	$stmt1->bindParam("dater", $date,PDO::PARAM_STR) ;
 	$stmt1->execute();
 	$data = $stmt1->fetchAll(PDO::FETCH_OBJ);
-	var_dump($data);
+	$data1 = json_encode($data)
+	echo $data1;
 }
 catch(PDOException $ae)
 {

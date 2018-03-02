@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2018 at 08:04 AM
+-- Generation Time: Mar 02, 2018 at 07:01 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -91,7 +91,7 @@ CREATE TABLE `emp_leaves` (
 --
 
 INSERT INTO `emp_leaves` (`emp_id`, `paid_leaves`, `unpaid_leaves`, `earned_leaves`, `counter`) VALUES
-('EMP01011972001', 7, 0, 0, 0);
+('EMP01011972001', 10, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -139,10 +139,11 @@ CREATE TABLE `leaves` (
 --
 
 INSERT INTO `leaves` (`leave_id`, `status`, `emp_id`, `title`, `start`, `end`, `day_type`, `leave_type`, `reason`) VALUES
-(1, 0, 'EMP01011972001', 'Test', '2018-02-01', '2018-02-10', 'Half Day', 'Unpaid', 'Reason test'),
-(2, 0, 'EMP01011972001', 'Dolor et est consectetur veniam est aspernatur eiusmod adipisicing commodi autem Nam', '2009-10-12', '1976-10-06', 'Full Day', 'Unpaid', 'Est harum ullam exercitation ullamco harum et placeat consectetur voluptates'),
+(1, 1, 'EMP01011972001', 'Test', '2018-02-01', '2018-02-10', 'Half Day', 'Unpaid', 'Reason test'),
+(2, 2, 'EMP01011972001', 'Dolor et est consectetur veniam est aspernatur eiusmod adipisicing commodi autem Nam', '2009-10-12', '1976-10-06', 'Full Day', 'Unpaid', 'Est harum ullam exercitation ullamco harum et placeat consectetur voluptates'),
 (3, 1, 'EMP01011972001', 'Testing', '2018-02-01', '2018-02-24', 'Full Day', 'Paid', 'dsvxfcgn'),
-(4, 0, 'EMP01011972001', 'Final Leave', '2018-03-01', '2018-04-07', 'Half Day', 'Unpaid', 'Vacation');
+(4, 0, 'EMP01011972001', 'Final Leave', '2018-03-01', '2018-04-07', 'Half Day', 'Unpaid', 'Vacation'),
+(5, 1, 'EMP01011972001', 'Maiores et quae at incididunt unde', '2013-12-05', '2013-12-09', 'Full Day', 'Unpaid', 'Non dicta sapiente reprehenderit alias voluptas mollit facilis reprehenderit duis aliquid voluptatem aliquam accusamus quod');
 
 -- --------------------------------------------------------
 
@@ -151,8 +152,8 @@ INSERT INTO `leaves` (`leave_id`, `status`, `emp_id`, `title`, `start`, `end`, `
 --
 
 CREATE TABLE `privileges` (
-  `emp_id` text NOT NULL,
-  `priv` int(2) NOT NULL
+  `emp_id` varchar(200) NOT NULL,
+  `privilege` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
@@ -176,9 +177,9 @@ CREATE TABLE `reimbursement` (
 --
 
 CREATE TABLE `status_report` (
-  `status_id` text NOT NULL,
-  `emp_id` text NOT NULL,
-  `client_id` text NOT NULL,
+  `status_id` int(200) NOT NULL,
+  `client_id` varchar(256) NOT NULL,
+  `emp_id` varchar(256) NOT NULL,
   `status_date` date NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
@@ -192,6 +193,13 @@ CREATE TABLE `status_report` (
   `remarks` text NOT NULL,
   `remb` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+--
+-- Dumping data for table `status_report`
+--
+
+INSERT INTO `status_report` (`status_id`, `client_id`, `emp_id`, `status_date`, `start_time`, `end_time`, `work_hrs`, `work_status`, `nat_work`, `work_subject`, `billed`, `add_comments`, `work_details`, `remarks`, `remb`) VALUES
+(1, 'EMP01011972001', 'EMP01011972001', '2018-03-01', '05:00:00', '21:00:00', 16, '', '', '', '', '', '', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -222,6 +230,18 @@ ALTER TABLE `leaves`
   ADD PRIMARY KEY (`leave_id`);
 
 --
+-- Indexes for table `privileges`
+--
+ALTER TABLE `privileges`
+  ADD PRIMARY KEY (`emp_id`);
+
+--
+-- Indexes for table `status_report`
+--
+ALTER TABLE `status_report`
+  ADD PRIMARY KEY (`status_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -235,7 +255,7 @@ ALTER TABLE `holidays`
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
