@@ -145,14 +145,6 @@
                     <input class="form-control required" id="pic" type="file" name="pic">
                   </div>
                 </section>
-                <h6>Step 4</h6>
-                <section>
-                  <h3>Terms and Conditions</h3>
-                  <label class="ui-checkbox ui-checkbox-success">
-                    <input class="required" id="acceptTerms" type="checkbox" name="acceptTerms"><span class="input-span"></span>I agree with the Terms and Conditions.
-                  </label>
-
-                </section>
               </form>
             </div>
           </div>
@@ -224,12 +216,18 @@
               calendarWeeks: true,
               autoclose: true
             });
-       $("#finish").click(function(){
-        console.log("Reached").
-        $("form").submit(function(){
-          alert("Submitted");
-        }); 
-    });
+
+       //FORM SUBMIT SCRIPT
+
+         $("#finish").click(function(){
+          console.log("Reached").
+          $("form").submit(function(){
+            alert("Submitted");
+          }); 
+      });
+
+         //FORM SUBMIT SCRIPT END
+
       });
     </script>
      <!-- PAGE LEVEL SCRIPTS-->
