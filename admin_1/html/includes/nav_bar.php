@@ -142,7 +142,7 @@
               </a>
             </li>
           </ul>
-          <div class="sidebar-footer"><a href="javascript:;"><i class="fa fa-bullhorn"></i></a><a href="calendar.html"><i class="fa fa-calendar"></i></a><a href="javascript:;"><i class="fa fa-commenting"></i></a><a href="login.html"><i class="fa fa-power-off"></i></a></div>
+          <div class="sidebar-footer"><a href="javascript:;"><i class="fa fa-bullhorn"></i></a><a href="calendar"><i class="fa fa-calendar"></i></a><a href="javascript:;"><i class="fa fa-commenting"></i></a><a href="login.html"><i class="fa fa-power-off"></i></a></div>
         </div>
       </nav>
       <!-- END SIDEBAR-->

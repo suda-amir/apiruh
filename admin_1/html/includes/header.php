@@ -22,13 +22,13 @@
     <!-- THEME STYLES-->
     <link href="../assets/css/main.css" rel="stylesheet"/>
     <!-- PAGE LEVEL STYLES-->
-  </head>
-  <style type="text/css">
-      .modal-dialog{
-        min-width: 60% !important;
-        max-width: 60% !important;
-      }
-      a.btn.btn-info{
-        color: #fff;
-      }
-  </style>
+</head>
+<style type="text/css">
+    .modal-dialog{
+      min-width: 60% !important;
+      max-width: 60% !important;
+    }
+    a.btn.btn-info{
+      color: #fff;
+    }
+</style>

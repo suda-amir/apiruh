@@ -2530,7 +2530,7 @@ body.fixed-layout.sidebar-mini .content-wrapper {
 .page-footer {
 	position: absolute;
 	left: 0;
-	bottom: 0;
+	bottom: 0 !important;
 	width: 100%;
 	padding: 10px 15px;
 	background-color: #fff;
@@ -2550,7 +2550,7 @@ body.fixed-layout.sidebar-mini .content-wrapper {
 	-webkit-transition: margin .2s ease-in-out;
 	-o-transition: margin .2s ease-in-out;
 	transition: margin .2s ease-in-out;
-	min-height: 1400px
+	
 }
 .dashboard-header {
 	padding-top: 30px;
@@ -2606,7 +2606,8 @@ body.fixed-layout .header, body.fixed-navbar .header {
 	z-index: 1002
 }
 body.fixed-layout .content-wrapper, body.fixed-navbar .content-wrapper {
-	padding-top: 50px
+	padding-top: 50px;
+	min-height: -webkit-fill-available;
 }
 body.fixed-layout.drawer-sidebar .page-sidebar, body.fixed-navbar.drawer-sidebar .page-sidebar {
 	margin-top: 0

@@ -12,8 +12,13 @@
       max-width: none;
     }
   </style>
+ <head>
+    <!-- PLUGINS STYLES-->
+    <link href="../../../vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet"/>
+    <link href="../../../vendors/dropzone/dist/min/basic.min.css" rel="stylesheet"/>
+ </head>
 
-  <body class="fixed-navbar sidebar-mini">
+  <body class="fixed-navbar">
     <div class="page-wrapper">
 
      <?php require_once('../includes/nav_bar.php'); ?>
@@ -22,138 +27,184 @@
         
          <!-- START PAGE CONTENT-->
          <div class="page-heading">
-          <h1 class="page-title">Add Employee Profile</h1>
+          <h1 class="page-title">Add Employee</h1>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Employee</li>
             <li class="breadcrumb-item active">Add Employee</li>
-
           </ol>
         </div>
-        
-        <!-- START FORM WIZARD CONTENT-->
         <div class="page-content fade-in-up">
-          
-          <div class="ibox">
-            <div class="ibox-head">
-              <div class="ibox-title">Add Employee</div>
-            </div>
-            <div class="ibox-body">
-              <form id="form-wizard" action="adding_emp.php" method="POST" enctype="multipart/form-data" novalidate="novalidate">
-                <h6>Step 1</h6>
-                <section>
-                  <h3>Employee Details</h3>
+          <div class="row">
+            <div class="col-lg-3 col-md-4">
+              <div class="ibox">
+                <div class="ibox-body text-center">
+                 <!-- START PAGE CONTENT-->
                   
-                 <div class="row">
-                   <div class="col-lg-6 col-md-12">
-                    <div class="form-group">
-                      <label>Name</label>
-                      <input class="form-control required" id="name" type="text" name="name">
-                    </div>
-                    <div class="form-group">
-                      <label>Nature of Employment</label>
-                      <select class="form-control required" name="noe" id="noe">
-                        <option value="Employee">Employee</option>
-                        <option value="Contract">Contract</option>
-                      </select>
-                    </div>
-                   <div class="form-group" id="date_3">
-                    <label>Date of Birth</label>
-                      <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                        <input class="form-control required" id="" name="dob" type="text" value="">
+                  <div class="page-content fade-in-up">
+                    <div class="ibox">
+                      
+                      <div class="ibox-body">
+                        <form class="dropzone" id="mydropzone" action="../assets/plugins/dropzone/demo-upload.php">
+                          <div class="fallback">
+                            <input name="file" type="file" multiple="multiple">
+                          </div>
+                        </form><br>
+                       
                       </div>
-                  </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12">
-                    <div class="form-group" id="date_4">
-                    <label>Date of Joining</label>
-                      <div class="input-group date"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                        <input class="form-control required" id="" name="doj" type="text" value="">
-                      </div>
-                  </div>
-                    <div class="form-group">
-                      <label>Designation</label>
-                      <input class="form-control required" id="designation" type="text" name="designation">
-                    </div>
-                    <div class="form-group">
-                      <label>Contact Details</label>
-                      <input class="form-control required" id="contact" type="number" name="contact">
                     </div>
                   </div>
-                  </div>
-                  <div class="form-group">
-                      <label>Email</label>
-                      <input class="form-control required" id="email" type="email" name="email">
-                    </div>
-                </section>
-                <h6>Step 2</h6>
-                <section>
-                  <h3>Personal Details</h3>
-                  <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                    <label>Permanent Address</label>
-                    <textarea class="form-control" rows="4" required="" name="addr"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label>PAN No.</label>
-                    <input class="form-control required" id="pan" type="text" name="pan">
-                  </div>
-                  <div class="form-group">
-                    <label>Aadhar Number</label>
-                    <input class="form-control required" id="aadhar" type="text" name="aadhar">
-                  </div>  
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                    <label>Emergency Contact Person</label>
-                    <input class="form-control required" id="ecp" type="text" name="ecp">
-                  </div>
-                  <div class="form-group">
-                    <label>Emergency Contact Number</label>
-                    <input class="form-control required" id="ecm" type="text" name="ecm">
-                  </div>
-                  <div class="form-group">
-                    <label>Blood Group</label>
-                    <input class="form-control required" id="blood" type="text" name="blood">
-                  </div>  
-                  </div>
-                  </div>
-                  
-                </section>
-                <h6>Details</h6>
-                <section>  
-                  <div class="form-group">
-                    <label>Qualifications</label>
-                    <input class="form-control required" id="qualifications" type="text" name="qualifications">
-                  </div>
+                  <!-- END PAGE CONTENT-->
 
-                  <div class="form-group">
-                    <label>Upload Supporting Documents</label>
-                    <input class="form-control required" id="qual_docs" type="file" name="qual_docs">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9 col-md-8">
+              <div class="ibox">
+                <div class="ibox-body">
+                  <ul class="nav nav-tabs tabs-line">                    
+                    <li class="nav-item"><a class="nav-link active" href="#tab-1" data-toggle="tab"><i class="ti-settings"></i> Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab-2" data-toggle="tab"><i class="ti-announcement"></i> Notifications</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-1">
+                      <form action="update_emp_details.php" method="POST" id="update_form" enctype="multipart/form-data">
+                        <div class="row">
+                          <div class="col-sm-6 form-group">
+                            <label>Name</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>                       
+                              <input class="form-control" type="text" placeholder="Name" name="name" >
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Nature of Employement</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="with icon" name="nature_of_employment">
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Employee ID</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="Name" name="emp_id" >
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Designation</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="with icon" name="designation">
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Mobile #</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="with icon" name="mobile_num" >
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Email</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="with icon" name="email" >
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group" id="date_1">
+                            <label>Date of Birth (D.O.B)</label>
+                            <div class="input-group date form_datetime"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
+                              <input class="form-control" name="dob" >
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group" id="date_1">
+                            <label>Date of Joining (D.O.J)</label>
+                            <div class="input-group date form_datetime"><span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
+                              <input class="form-control" name="doj" >
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>PAN #</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="with icon" name="pan">
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Aadhaar # </label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="with icon" name="aadhar">
+                            </div>
+                          </div>
+                          <div class="col-sm-12 form-group">
+                            <label>Permanent Address</label>
+                            <div class="form-group">
+                              <textarea class="form-control" rows="3" maxlength="75" placeholder="This textarea has a limit of 75 chars." name="addr"></textarea>
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Emergency Contact Person</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="with icon" name="emer_contact_per" >
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Emergency Contact # </label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="with icon" name="emer_contact">
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Blood Group</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="with icon" name="blood">
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Qualications</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="text" placeholder="with icon" name="qualifications" >
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Supporting Documents</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="file" placeholder="with icon" name="docs">
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Service Level Agreement</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="file" placeholder="with icon" name="sla">
+                            </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                            <label>Offer Letter</label>
+                            <div class="input-group-icon">
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <input class="form-control" type="file" placeholder="with icon" name="offer_letter">
+                            </div>
+                          </div>
+                        </div>                        
+                      </form>
+                      <button class="btn btn-info" id="submit_update">Save Details</button>
+                    </div>
                   </div>
-                  <div class="form-group" id="service" style="display: none;">
-                    <label>Service Agreement</label>
-                    <input class="form-control required" id="service_aggr" type="file" name="service_aggr">
-                  </div>
-                  <div class="form-group" id="offr" style="display: block;">
-                    <label>Offer Letter</label>
-                    <input class="form-control required" id="offer_letter" type="file" name="offer_letter">
-                  </div>
-                   <div class="form-group" id="offr" style="display: block;">
-                    <label>Profile Pic</label>
-                    <input class="form-control required" id="pic" type="file" name="pic">
-                  </div>
-                </section>
-              </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <!-- END PAGE CONTENT--> 
 
-       <footer class="page-footer">
-          <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
-          <div class="pull-right"><a class="link-blue" href="javascript:;"><i class="fa fa-shopping-cart m-r-5"></i>Buy now</a></div>2017 © <b>Adminca</b> - Save your time, choose the best
-        </footer>
+       
                 <?php require_once('../includes/footer.php'); ?>
 
       </div>
@@ -199,6 +250,8 @@
     <script src="../../../vendors/jquery.steps/build/jquery.steps.min.js" type="text/javascript"></script>
     <script src="../../../vendors/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
 
+    <!-- PAGE LEVEL PLUGINS-->
+    <script src="../../../vendors/dropzone/dist/min/dropzone.min.js" type="text/javascript"></script>
    
     <script type="text/javascript">
       $(document).ready(function(){
@@ -272,8 +325,26 @@
         });
       })
     </script>
+     <!-- PAGE LEVEL SCRIPTS-->
     <script type="text/javascript">
-
+      Dropzone.options.mydropzone = {
+          paramName: "file", // The name that will be used to transfer the file
+          maxFilesize: 5, // MB
+          dictDefaultMessage: '<div class="text-center m-b-10"><i class="fa fa-cloud-upload text-info" style="font-size:50px"></i></div> <strong>Drop Employee Photo here or click to upload. </strong></br> ',
+          init: function() {
+              this.on("addedfile", function(file){
+                  var removeButton = Dropzone.createElement("<a href='javascript:;'' class='btn btn-danger btn-sm btn-block'>Remove</a>");
+                  //var removeButton = Dropzone.createElement("<a href='javascript:;' class='dropzone-close'></a>");
+                  var _this = this;
+                  removeButton.addEventListener("click", function(e) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      _this.removeFile(file);
+                  });
+                  file.previewElement.appendChild(removeButton);
+              });
+          }
+      }
     </script>
 
 

@@ -34,7 +34,7 @@
                   <div class="m-t-20"><img class="img-circle" src="../assets/img/users/u3.jpg"/>
                   </div>
                   <h5 class="font-strong m-b-10 m-t-10"><?php foreach($data as $key){echo $key->name;} ?></h5>
-                  <p class="  m-b-10 m-t-10"><?php foreach ($data as $key){echo $key->id;} ?></p>
+                  <p class="  m-b-10 m-t-10"><?php foreach ($data as $key){echo $key->emp_id;} ?></p>
                   <div class="m-b-20 text-muted"><?php foreach ($data as $key){echo $key->design;} ?></div>
                   <button class="btn btn-default labeled" id="edit_profile"><span class="btn-label"><i class="fa fa-pencil"></i></span>Edit</button>
 
@@ -56,7 +56,7 @@
                           <div class="col-sm-6 form-group">
                             <label>Name</label>
                             <div class="input-group-icon">
-                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>                       
                               <input class="form-control" type="text" placeholder="Name" name="name" value="<?php foreach ($data as $key){echo $key->name;} ?>">
                             </div>
                           </div>
@@ -64,6 +64,10 @@
                             <label>Nature of Employement</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
+                              <select>
+                                <option value="Employee"></option>
+                                <option value="Contract"></option>
+                              </select>
                               <input class="form-control" type="text" placeholder="with icon" name="nature_of_employment" value="<?php foreach ($data as $key){echo $key->nat_emp;} ?>">
                             </div>
                           </div>
@@ -92,7 +96,7 @@
                             <label>Email</label>
                             <div class="input-group-icon">
                               <div class="input-icon"><i class="fa fa-link text-primary font-15"></i></div>
-                              <input class="form-control" type="text" placeholder="with icon" name="email"> value="<?php foreach ($data as $key){echo $key->email;} ?>">
+                              <input class="form-control" type="text" placeholder="with icon" name="email" value="<?php foreach ($data as $key){echo $key->email;} ?>">
                             </div>
                           </div>
                           <div class="col-sm-6 form-group" id="date_1">
