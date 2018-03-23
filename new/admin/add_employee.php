@@ -746,7 +746,7 @@
                                             <div class="input-group-btn bg-white">
                                                 <button class="btn btn-outline-secondary">+91</button>
                                             </div>
-                                            <input class="form-control" type="text" placeholder="Enter Phone">
+                                            <input class="form-control" type="text" placeholder="Enter Mobile Number">
                                         </div>
                                     </div>
                                     <div class="form-group mb-4 row">
@@ -834,27 +834,38 @@
                                         <div class="col-md-6">
                                             <label>Emergency Contact Person</label>
                                             <div class="input-group-icon input-group-icon-left">                                      
-                                                <span class="input-icon input-icon-left"><i class="ti-id-badge"></i></span>
-                                                <input class="form-control" type="text" placeholder="Enter Aadhaar No">
+                                                <span class="input-icon input-icon-left"><i class="ti-user"></i></span>
+                                                <input class="form-control" type="text" placeholder="Enter Emergency Contact Person Name">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label>Emergency Contact Number</label>
                                             <div class="input-group-icon input-group-icon-left">                                      
-                                                <span class="input-icon input-icon-left"><i class="ti-id-badge"></i></span>
-                                                <input class="form-control" type="text" placeholder="Enter PAN No">
+                                                <div class="input-group">
+                                                    <div class="input-group-btn bg-white">
+                                                        <button class="btn btn-outline-secondary">+91</button>
+                                                    </div>
+                                                    <input class="form-control" type="text" placeholder="Enter Number">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group mb-4">                                       
-                                        <label>Blood Group</label>
-                                        <div class="input-group-icon input-group-icon-left">                                      
-                                            <span class="input-icon input-icon-left"><i class="ti-id-badge"></i></span>
-                                            <input class="form-control" type="text" placeholder="Enter Aadhaar No">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Blood Group</label>
+                                        <div>
+                                            <select class="selectpicker show-tick form-control" data-width="200px">
+                                                <option>O +</option>
+                                                <option>O -</option>
+                                                <option>A +</option>
+                                                <option>A -</option>
+                                                <option>B +</option>
+                                                <option>B -</option>
+                                                <option>AB +</option>
+                                                <option>AB -</option>
+                                            </select>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                             <div class="row">
