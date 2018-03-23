@@ -15,6 +15,8 @@
     <link href="../assets/vendors/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
     <!-- THEME STYLES-->
     <link href="../assets/css/main.min.css" rel="stylesheet" />
+        <link href="../assets/vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+
     <!-- PAGE LEVEL STYLES-->
 </head>
 

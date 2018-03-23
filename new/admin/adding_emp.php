@@ -5,6 +5,7 @@ session_start();
 
 
 $name = $_POST['name'];
+$email = $_POST['email'];
 $dob = $_POST['dob'];
 $doj = $_POST['doj'];
 $noe = $_POST['noe'];
@@ -17,17 +18,24 @@ $ecp = $_POST['ecp'];
 $ecm = $_POST['ecm'];
 $blood = $_POST['blood'];
 $qualifications = $_POST['qualifications'];
-$qual_docs = $_POST['qual_docs'];
-$target_dir = 'employee/'.$name;
-$offer = $target_dir . basename($_FILES["offer_letter"]["name"]);
-$service_aggr = $target_dir . basename($_FILES["service_aggr"]["name"]);
-$pic = $target_dir . basename($_FILES["pic"]["name"]);
 
 if (!file_exists('employee/'.$name)) {
     mkdir('employee/'.$name, 0777, true);
 }
 
-$stmt1 = $connection->prepare("SELECT * FROM employee WHERE 1 ORDER DESC");
+$target_dir = 'employee/'.$name;
+
+$qual_docs = $target_dir . basename($_FILES["qual_docs"]["name"]);
+
+if($noe == "Employee"){
+	$offer = $target_dir . basename($_FILES["offer_letter"]["name"]);
+}else{
+	$service_aggr = $target_dir . basename($_FILES["service_aggr"]["name"]);	
+}
+$pic = $target_dir . basename($_FILES["pic"]["name"]);
+
+
+$stmt1 = $connection->prepare("SELECT * FROM employee WHERE 1");
 $stmt1->execute();
 $data = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 $id = $data[0]['emp_id'];
@@ -70,7 +78,7 @@ catch(PDOException $ae)
 	echo $ae->getMessage();
 }
 
-header("location: ");
+//header("location: ");
 
 
 ?>
