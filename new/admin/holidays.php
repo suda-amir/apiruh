@@ -9,7 +9,7 @@
       $holidays = get_holidays_data();
 
   ?>
-  <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
+  <link href="../assets/vendors/dataTables/datatables.min.css" rel="stylesheet"/>
 
 
   <body class="fixed-navbar">
@@ -241,7 +241,7 @@
     <!-- End Session-timeout modal-->
     <!-- CORE PLUGINS-->
         <?php require_once('../includes/scripts.php'); ?>
-        <script src="../../../vendors/dataTables/datatables.min.js" type="text/javascript"></script>
+        <script src="../assets/vendors/dataTables/datatables.min.js" type="text/javascript"></script>
         <script type="text/javascript">
           $(document).ready(function(){
             $('#date_1 .input-group.date').datepicker({
