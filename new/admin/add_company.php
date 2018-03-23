@@ -782,7 +782,7 @@
                                     <div class="form-group mb-4">
                                          <label for="input-file-now-custom-1">Add Profile Photo</label>
                                           <input type="file" id="input-file-now-custom-1" class="dropify" data-default-file="../assets/employee.png" />
-                                    </div>
+                                    </div>    
                                 </div>
                             </div>
                             <div class="row">
