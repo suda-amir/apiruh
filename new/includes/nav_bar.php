@@ -230,7 +230,7 @@
               </a>
             </li>
             <li>
-              <a href="../admin/employee">
+              <a href="../admin/employee.php">
                 <i class="sidebar-item-icon fa fa-user-circle-o" style="font-size:15px"></i>
                 <span class="nav-label">Employee</span>
               </a>

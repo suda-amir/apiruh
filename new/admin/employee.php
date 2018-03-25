@@ -35,10 +35,11 @@
           </div>
           <div class="page-content fade-in-up" style="padding-top: 0px; margin-top: 0px">
           <div class="row products-board">
-            <div class="col-lg-3 col-sm-6">
-              <?php
+            <?php
                 foreach ($emp as $key){
               ?>
+            <div class="col-lg-3 col-sm-6">
+              
               <div class="card"><img src="../assets/img/image.png"/>
                 <div class="card-body"><a class="product-name" href="../admin/employee_profile?id=<?=$key->emp_id?>"><?= $key->name; ?></a>
                   <div class="product-price"><?= $key->design; ?></div>
@@ -48,10 +49,11 @@
                   </div>
                 </div>
               </div>
-              <?php 
+              
+            </div>
+            <?php 
                 }
               ?>
-            </div>
           </div>
         </div>
         </div>
