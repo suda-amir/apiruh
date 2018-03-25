@@ -110,7 +110,7 @@
                                     <div class="form-group mb-4">                                       
                                         <label>Qualifications</label>
                                         <div class="input-group-icon input-group-icon-left">                                      
-                                            <input class="tagsinput form-control" type="text" value="" name="qualifications[]" placeholder="Enter Qualifications">
+                                            <input class="tagsinput form-control" type="text" name="qualifications[]" placeholder="Enter Qualifications">
                                         </div>
                                     </div>
 
@@ -241,6 +241,9 @@
               autoclose: true,
               format: 'dd M yyyy'
             });
+           $('.tagsinput').tagsinput({
+             tagClass: 'label label-success'
+           });
           });
         </script>
         <script>

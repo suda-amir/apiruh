@@ -26,6 +26,29 @@ function get_emp_data($id){
 		echo '{"error": {"text":'. $e->getMessage() .'}}';
 	}
 }
+function get_comp_details(){
+	global $connection;
+	try {
+		$stmt = $connection->prepare("SELECT * FROM `client` WHERE 1");
+		$stmt->execute();
+		$data = $stmt->fetchAll(PDO::FETCH_OBJ);
+		return ($data);
+	} catch (PDOException $e) {
+		echo '{"error": {"text":'. $e->getMessage() .'}}';
+	}
+}
+function get_comp_data($id){
+	global $connection;
+	try {
+		$stmt = $connection->prepare("SELECT * FROM `client` WHERE client_id = :id");
+		$stmt->bindParam("id", $id,PDO::PARAM_STR) ;
+		$stmt->execute();
+		$data = $stmt->fetchAll(PDO::FETCH_OBJ);
+		return ($data);
+	} catch (PDOException $e) {
+		echo '{"error": {"text":'. $e->getMessage() .'}}';
+	}
+}
 function get_leaves_data(){
 	global $connection;
 	try {
