@@ -73,7 +73,7 @@
                                             <label>Date of Joining</label>
                                             <div class="input-group date">
                                                 <span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                                <input class="form-control" type="text" name="doj" value="auto calculate">
+                                                <input class="form-control" type="text" name="doj" >
                                             </div>
                                             <span class="help-block">Please select date of joining.</span>
                                         </div>
@@ -233,6 +233,8 @@
               autoclose: true,
               format: 'dd M yyyy'
             });
+           $('#date_1 .input-group.date').datepicker('setDate', 'now');
+
            $('#date_3 .input-group.date').datepicker({
               todayBtn: "linked",
               keyboardNavigation: false,
