@@ -1,45 +1,53 @@
 <?php
-
-require_once('../config.php');
-session_start();
-
+require_once('config.php');
 
 $name = $_POST['name'];
-$dob = $_POST['dob'];
-$doj = $_POST['doj'];
-$noe = $_POST['noe'];
-$designation = $_POST['designation'];
-$contact = $_POST['contact'];
-$addr = $_POST['addr'];
+$addr = $_POST['address'];
+$poc = $_POST['poc'];
+$pocn = $_POST['pocn'];
+$gstin = $_POST['gstin'];
 $pan = $_POST['pan'];
-$aadhar = $_POST['aadhar'];
-$ecp = $_POST['ecp'];
-$ecm = $_POST['ecm'];
-$blood = $_POST['blood'];
-$qualifications = $_POST['qualifications'];
-$qual_docs = $_POST['qual_docs'];
-$target_dir = "uploads/";
-$offer = $target_dir . basename($_FILES["offer_letter"]["name"]);
-$service_aggr = $target_dir . basename($_FILES["service_aggr"]["name"]);
-try{
-	$stmt = $connection->prepare("INSERT INTO `leaves`(`leave_id`, `title`, `start`, `end`, `day_type`, `leave_type`, `reason`) VALUES (:id, :title, :start_date, :end_date, :half_leave, :leave_type, :reason)");
+$target_dir = 'company/'.$name;
+if (!file_exists('company/'.$name)) {
+    mkdir('company/'.$name, 0777, true);
+}
+$file_tmp = $_FILES['pic']['tmp_name'];
+$file_tmp1 = $_FILES['support_docs']['tmp_name'];
+$file_tmp2 = $_FILES['agreement']['tmp_name'];
 
-	$stmt->bindParam("id", $emp_id,PDO::PARAM_STR) ;
-	$stmt->bindParam("title", $title,PDO::PARAM_STR) ;
-	$stmt->bindParam("start_date", $start_date,PDO::PARAM_STR) ;
-	$stmt->bindParam("end_date", $end_date,PDO::PARAM_STR) ;
-	$stmt->bindParam("half_leave", $half_leave,PDO::PARAM_STR) ;
-	$stmt->bindParam("emp_id", $emp_id,PDO::PARAM_STR) ;
-	$stmt->bindParam("leave_type", $leave_type,PDO::PARAM_STR) ;
-	$stmt->bindParam("reason", $reason,PDO::PARAM_STR) ;
+$file_name = preg_replace('/\s/', '', $_FILES['pic']['name']);
+move_uploaded_file($file_tmp, $target_dir.$file_name);
+
+$file_name1 = preg_replace('/\s/', '', $_FILES['support_docs']['name']);
+move_uploaded_file($file_tmp1, $target_dir.$file_name1);
+
+$file_name2 = preg_replace('/\s/', '', $_FILES['agreement']['name']);
+move_uploaded_file($file_tmp2, $target_dir.$file_name2);
+
+$pic = $target_dir.'/'.$file_name;
+$support_docs = $target_dir.'/'.$file_name1;
+$agreement = $target_dir.'/'.$file_name2;
+
+try{
+	$stmt = $connection->prepare("INSERT INTO `client`(`client_name`, `client_addr`, `client_poc`, `client_poc_no`, `gstin`, `pan_no`, `agreement`, `support_docs`, `pic`) VALUES (:name, :addr, :poc, :pocn, :gstin, :pan, :agreement, :support_docs, :pic)");
+
+	$stmt->bindParam("name", $name,PDO::PARAM_STR) ;
+	$stmt->bindParam("addr", $addr,PDO::PARAM_STR) ;
+	$stmt->bindParam("poc", $poc,PDO::PARAM_STR) ;
+	$stmt->bindParam("pocn", $pocn,PDO::PARAM_STR) ;
+	$stmt->bindParam("pan", $pan,PDO::PARAM_STR) ;
+	$stmt->bindParam("gstin", $gstin,PDO::PARAM_STR) ;
+	$stmt->bindParam("pic", $pic,PDO::PARAM_STR) ;
+	$stmt->bindParam("support_docs", $support_docs,PDO::PARAM_STR) ;
+	$stmt->bindParam("agreement", $agreement,PDO::PARAM_STR) ;
 	$stmt->execute();	
 }
+
 catch(PDOException $ae)
 {
 	echo $ae->getMessage();
 }
 
-header("location: );
-
+header("location: company.php" );
 
 ?>

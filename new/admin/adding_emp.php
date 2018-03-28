@@ -23,16 +23,31 @@ if (!file_exists('employee/'.$name)) {
 
 $target_dir = 'employee/'.$name;
 
-$qual_docs = $target_dir . basename($_FILES["qual_docs"]["name"]);
+$file_tmp = $_FILES['pic']['tmp_name'];
+$file_tmp1 = $_FILES['qual_docs']['tmp_name'];
+$file_tmp2 = $_FILES['offer_letter']['tmp_name'];
+$file_tmp3 = $_FILES['service_aggr']['tmp_name'];
+
+$file_name = preg_replace('/\s/', '', $_FILES['pic']['name']);
+move_uploaded_file($file_tmp, $target_dir.$file_name);
+
+$file_name1 = preg_replace('/\s/', '', $_FILES['qual_docs']['name']);
+move_uploaded_file($file_tmp1, $target_dir.$file_name1);
 
 if($noe == "Employee"){
-	$offer = $target_dir . basename($_FILES["offer_letter"]["name"]);
+	$file_name2 = preg_replace('/\s/', '', $_FILES['offer_letter']['name']);
+	move_uploaded_file($file_tmp2, $target_dir.$file_name2);
 	$service_aggr = "";
 }else{
-	$service_aggr = $target_dir . basename($_FILES["service_aggr"]["name"]);	
+	$file_name3 = preg_replace('/\s/', '', $_FILES['service_aggr']['name']);
+	move_uploaded_file($file_tmp3, $target_dir.$file_name3);
 	$offer = "";
 }
-$pic = $target_dir . basename($_FILES["pic"]["name"]);
+
+$pic = $target_dir.'/'.$file_name;
+$qual_docs = $target_dir.'/'.$file_name1;
+$offer = $target_dir.'/'.$file_name2;
+$service_aggr = $target_dir.'/'.$file_name3;
 
 
 $stmt1 = $connection->prepare("SELECT * FROM employee WHERE 1");
