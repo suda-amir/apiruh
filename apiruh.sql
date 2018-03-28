@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2018 at 07:01 AM
+-- Generation Time: Mar 28, 2018 at 10:58 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -29,12 +29,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `client` (
-  `client_id` text NOT NULL,
+  `client_id` int(20) NOT NULL,
   `client_name` text NOT NULL,
   `client_addr` text NOT NULL,
   `client_poc` text NOT NULL,
-  `client_poc_no` int(15) NOT NULL
+  `client_poc_no` int(15) NOT NULL,
+  `gstin` varchar(20) NOT NULL,
+  `pan_no` varchar(20) NOT NULL,
+  `agreement` varchar(256) NOT NULL,
+  `support_docs` varchar(256) NOT NULL,
+  `pic` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`client_id`, `client_name`, `client_addr`, `client_poc`, `client_poc_no`, `gstin`, `pan_no`, `agreement`, `support_docs`, `pic`) VALUES
+(10, 'dwa', 'sfavfs', 'asfaf', 0, 'fasfasf', 'safasf', 'company/dwa/HOWTOMANAGEGEMSACCOUT-1.pptx', 'company/dwa/HOWTOMANAGEGEMSACCOUT-1.pptx', 'company/dwa/logo.png');
 
 -- --------------------------------------------------------
 
@@ -43,6 +55,7 @@ CREATE TABLE `client` (
 --
 
 CREATE TABLE `employee` (
+  `id` int(3) NOT NULL,
   `emp_id` varchar(15) DEFAULT NULL,
   `name` varchar(500) DEFAULT NULL,
   `nat_emp` varchar(100) DEFAULT NULL,
@@ -69,8 +82,9 @@ CREATE TABLE `employee` (
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`emp_id`, `name`, `nat_emp`, `personal_no`, `email`, `dob`, `doj`, `design`, `pan_no`, `aadhar_no`, `perm_addr`, `contct_det`, `emr_cntct_per`, `emr_cntct_no`, `blood_grp`, `qualifications`, `supprt_docs`, `serv_agr`, `offr_letter`, `emp_pic`) VALUES
-('EMP01011972001', 'DEFAULT', 'ADMIN', NULL, 'sudarshan@amirineni.co.in', '09-11-1997', '01-02-2018', 'Master Admin', NULL, NULL, NULL, NULL, NULL, NULL, 'O+ve', 'Admin', NULL, NULL, NULL, '');
+INSERT INTO `employee` (`id`, `emp_id`, `name`, `nat_emp`, `personal_no`, `email`, `dob`, `doj`, `design`, `pan_no`, `aadhar_no`, `perm_addr`, `contct_det`, `emr_cntct_per`, `emr_cntct_no`, `blood_grp`, `qualifications`, `supprt_docs`, `serv_agr`, `offr_letter`, `emp_pic`) VALUES
+(1, 'EMP01011972001', 'DEFAULT', 'ADMIN', NULL, 'sudarshan@amirineni.co.in', '09-11-1997', '01-02-2018', 'Master Admin', NULL, NULL, NULL, NULL, NULL, NULL, 'O+ve', 'Admin', NULL, NULL, NULL, ''),
+(2, 'EMP110320182', 'Alma Saunders', 'Employee', 'Quasi in quia dolores voluptates quisquam sunt hic', 'kezequte@mailinator.com', '01 Mar 2018', '11 Mar 2018', 'Necessitatibus dolor amet esse magni quos ipsum voluptas quia sit', '2398742525', '501485214585', 'Consequuntur architecto anim minus irure repudiandae aliquam dolore et inventore sint nulla omnis tempor obcaecati ut', 'Quasi in quia dolores voluptates quisquam sunt hic occaecat vitae sint dolorem provident totam nulla', 'Nostrum at est eligendi occaecat rerum dolor velit voluptas in est dolorem nisi dolore occaecat ut et aspernatur mollitia', 'Id sed et vero et aliqua', 'O -', 'Velit omnis nisi laudantium at reprehenderit a', 'employee/Alma Saunders', '', 'employee/Alma Saunders', 'employee/Alma Saunders');
 
 -- --------------------------------------------------------
 
@@ -206,9 +220,16 @@ INSERT INTO `status_report` (`status_id`, `client_id`, `emp_id`, `status_date`, 
 --
 
 --
+-- Indexes for table `client`
+--
+ALTER TABLE `client`
+  ADD PRIMARY KEY (`client_id`);
+
+--
 -- Indexes for table `employee`
 --
 ALTER TABLE `employee`
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `emp_id` (`emp_id`);
 
 --
@@ -244,6 +265,18 @@ ALTER TABLE `status_report`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `client`
+--
+ALTER TABLE `client`
+  MODIFY `client_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `holidays`
