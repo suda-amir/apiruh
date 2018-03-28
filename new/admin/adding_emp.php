@@ -29,18 +29,18 @@ $file_tmp2 = $_FILES['offer_letter']['tmp_name'];
 $file_tmp3 = $_FILES['service_aggr']['tmp_name'];
 
 $file_name = preg_replace('/\s/', '', $_FILES['pic']['name']);
-move_uploaded_file($file_tmp, $target_dir.$file_name);
+move_uploaded_file($file_tmp, $target_dir.'/'.$file_name);
 
 $file_name1 = preg_replace('/\s/', '', $_FILES['qual_docs']['name']);
-move_uploaded_file($file_tmp1, $target_dir.$file_name1);
+move_uploaded_file($file_tmp1, $target_dir.'/'.$file_name1);
 
 if($noe == "Employee"){
 	$file_name2 = preg_replace('/\s/', '', $_FILES['offer_letter']['name']);
-	move_uploaded_file($file_tmp2, $target_dir.$file_name2);
+	move_uploaded_file($file_tmp2, $target_dir.'/'.$file_name2);
 	$service_aggr = "";
 }else{
 	$file_name3 = preg_replace('/\s/', '', $_FILES['service_aggr']['name']);
-	move_uploaded_file($file_tmp3, $target_dir.$file_name3);
+	move_uploaded_file($file_tmp3, $target_dir.'/'.$file_name3);
 	$offer = "";
 }
 

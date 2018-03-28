@@ -41,10 +41,8 @@
               ?>
             <div class="col-lg-3 col-sm-6">
               
-              <div class="card"><img src="../assets/img/image.png"/>
-                <div class="card-body"><a class="product-name" href="../admin/employee_profile?id=<?=$key->emp_id?>"><?= $key->name; ?></a>
-                  <div class="product-price"><?= $key->design; ?></div>
-                  <div class="product-price"><?= $key->email; ?></div>
+              <div class="card"><img src="<?= $key->pic; ?>"/>
+                <div class="card-body"><a class="product-name" href="../admin/employee_profile?id=<?=$key->emp_id?>"><?= $key->client_name; ?></a><br>
                   <div class="m-t-10 d-flex justify-content-between align-items-center">
                     <a href="../admin/employee_profile?id=<?=$key->emp_id?>"><button class="btn btn-outline-info btn-rounded"><i class="fa fa-eye font-16"></i> View Profile</button></a>
                   </div>

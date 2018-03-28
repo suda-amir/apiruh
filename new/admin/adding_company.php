@@ -16,13 +16,13 @@ $file_tmp1 = $_FILES['support_docs']['tmp_name'];
 $file_tmp2 = $_FILES['agreement']['tmp_name'];
 
 $file_name = preg_replace('/\s/', '', $_FILES['pic']['name']);
-move_uploaded_file($file_tmp, $target_dir.$file_name);
+move_uploaded_file($file_tmp, $target_dir.'/'.$file_name);
 
 $file_name1 = preg_replace('/\s/', '', $_FILES['support_docs']['name']);
-move_uploaded_file($file_tmp1, $target_dir.$file_name1);
+move_uploaded_file($file_tmp1, $target_dir.'/'.$file_name1);
 
 $file_name2 = preg_replace('/\s/', '', $_FILES['agreement']['name']);
-move_uploaded_file($file_tmp2, $target_dir.$file_name2);
+move_uploaded_file($file_tmp2, $target_dir.'/'.$file_name2);
 
 $pic = $target_dir.'/'.$file_name;
 $support_docs = $target_dir.'/'.$file_name1;
