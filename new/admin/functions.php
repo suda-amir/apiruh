@@ -95,4 +95,15 @@ function get_each_holidays_data($id){
 		echo '{"error": {"text":'. $e->getMessage() .'}}';
 	}
 }
+function get_status_reports(){
+	global $connection;
+	try {
+		$stmt = $connection->prepare("SELECT * FROM `status_report` WHERE 1");
+		$stmt->execute();
+		$data = $stmt->fetchAll(PDO::FETCH_OBJ);
+		return ($data);
+	} catch (PDOException $e) {
+		echo '{"error": {"text":'. $e->getMessage() .'}}';
+	}
+}
 ?>

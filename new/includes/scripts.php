@@ -8,7 +8,9 @@
     <script src="../assets/vendors/toastr/toastr.min.js"></script>
     <script src="../assets/vendors/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="../assets/vendors/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-        <script src="../assets/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="../assets/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="../assets/vendors/clockpicker/dist/bootstrap-clockpicker.min.js"></script>
+
 
    
     <!-- CORE SCRIPTS-->

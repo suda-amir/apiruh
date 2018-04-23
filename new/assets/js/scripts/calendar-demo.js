@@ -146,24 +146,34 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay,listWeek'
+                right: '',
             },
-            events: APP.ASSETS_PATH+'demo/server/events.php',
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar
-            navLinks: true, // can click day/week names to navigate views
-            eventLimit: true, // allow "more" link when too many events
-            selectable: true,
-            drop: function(date) { $this.onDrop($(this), date); },
-            select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
-            eventClick: function(calEvent, jsEvent, view) { $this.updateEvent(calEvent); },
-            // The same can be done for these events
-            eventResize: function(event, delta, revertFunc) { $this.updateEvent(event, revertFunc); },
-            eventDrop: function(event, delta, revertFunc) { $this.updateEvent(event, revertFunc); },
+            events: {
+                url: "get_status_calendar.php"
+            },
+            dayClick: function(date, jsEvent, view){     
+                var d = new Date(date);
+                var dated = ("0" + d.getDate()).slice(-2);
+                var m =  d.getMonth();
+                var month =  parseInt(m)+1;
+                month = ("0"+month).slice(-2);
+                var y = d.getFullYear();
+                var dateFinal = y + "-" + month + "-" + dated;
+                var userId = "EMP01011972001";
+            $.ajax({     
+                url: 'callDailyEvents.php',
+                type: 'POST',
+                data: {date: dateFinal, id: userId},
+                success: function (data) { 
+                console.log(data);
+                console.log(dateFinal);
+                $('#show_data').css("display", "none");
+                $('#coming_from_calendar').html(data);
+              }  
 
-            eventRender: function(event, element, view) {
-                event.allDay = event.allDay == true ? true : false;
-            },
+                //$('#dailyEventer').html(data);
+            });
+        },
         });
     }
     

@@ -6,17 +6,14 @@
       require_once('../includes/header.php');
       require_once('functions.php');
       $emp = get_comp_details();
+      $status_report = get_status_reports();
 
   ?>
-  <link href="../../../vendors/dataTables/datatables.min.css" rel="stylesheet"/>
-   <link href="../assets/css/pages/ecommerce.css" rel="stylesheet"/>
        <link href="../assets/vendors/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
 
     <link href="../assets/vendors/fullcalendar/dist/fullcalendar.print.min.css" rel="stylesheet" media="print" />
 
     <link href="../assets/vendors/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-
-    <link href="../assets/vendors/select2/dist/css/select2.min.css" rel="stylesheet" />
 
     <link href="../assets/vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
 
@@ -60,55 +57,12 @@
                                     <span class="btn-icon"><i class="la la-plus"></i>Add Status Report</span>
                                 </button>
                             </div>
-                            <div class="ibox-body p-3">                             
-
-                                    <div class="alert alert-info alert-dismissable fade show alert-bordered has-icon"><i class="la la-info alert-icon"></i>
-                                    <strong>Info!</strong><br>This alert needs your attention, but it's not super important. </div>
-                                <div class="alert alert-warning alert-dismissable fade show alert-bordered has-icon"><i class="la la-warning alert-icon"></i>
-                                    <strong>Warning!</strong><br>Better check yourself, you're not looking too good. </div>
-                                <div class="alert alert-primary alert-dismissable fade show alert-bordered has-icon"><i class="la la-check alert-icon"></i>
-                                   <strong>Well done!</strong><br>You successfully read this important alert message.</div>
-                                <div class="alert alert-pink alert-dismissable fade show alert-bordered has-icon"><i class="la la-info-circle alert-icon"></i>
-                                   <strong>Well done!</strong><br>You successfully read this important alert message.</div>
-                               <table class="table table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th width="40%">Task</th>
-                                            <th width="30%" align="center">Project</th>
-                                            <th width="10%">Status</th>
-                                            <th width="10%" align="center">Hours</th>
-                                            <th width="10%"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr >
-                                            <td>1</td>
-                                            <td><b>Mark</td>                                            
-                                            <td><i class="ti-check text-success"></i></td>
-                                            <td>4</td>
-                                            <td><button class="btn btn-outline-info btn-icon-only btn-circle btn-sm btn-thick" data-toggle="modal" data-target="#new-event-modal" ><i class="la la-binoculars" ></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td><i class="ti-info-alt text-info"></i></td>
-                                            <td>3</td>
-                                            <td><button class="btn btn-outline-info btn-icon-only btn-circle btn-sm btn-thick" data-toggle="modal" data-target="#new-event-modal"><i class="la la-binoculars"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td><i class="ti-time text-warning"></i></td>
-                                            <td>1</td>
-                                            <td><button class="btn btn-outline-info btn-icon-only btn-circle btn-sm btn-thick" data-toggle="modal" data-target="#new-event-modal"><i class="la la-binoculars"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"><h3><b>Total</b></h3></td>
-                                            
-                                            <td colspan="2"><h3><b>8</b> hrs</h3></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="ibox-body p-3" id="show_data" style="display: block;">                             
+                                <span>Click on the dates in the Calendar to view the Status Report</span>
+                            </div>
+                            <div class="ibox-body p-3" id="coming_from_calendar">                             
+                                
+                                    
                             </div>
 
                         </div>
@@ -117,7 +71,7 @@
                 <!-- New Event Dialog-->
                 <div class="modal fade" id="new-event-modal" role="dialog">
                     <div class="modal-dialog" role="document">
-                        <form class="modal-content form-horizontal" id="newEventForm" action="javascript:;">
+                        <form class="modal-content form-horizontal" action="add_status_report.php" method="POST">
                             <div class="modal-header p-4">
                                 <h5 class="modal-title">Add Status Report</h5>
                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -130,22 +84,160 @@
                                        <label class="col-form-label text-muted">Date *:</label>
                                         <div class="input-group date">
                                             <span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
-                                            <input class="form-control" type="text" value="04/12/2017">
+                                            <input class="form-control" type="text" value="04/12/2017" name="date">
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4" id="date_1">
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4" id="">
                                        <label class="col-form-label text-muted">Start Time *:</label>
                                         <div class="input-group clockpicker" data-autoclose="true">
-                                            <input class="form-control" type="text" value="11:30">
+                                            <input class="form-control" type="text" value="11:30" name="in_time">
                                             <span class="input-group-addon">
                                                 <span class="fa fa-clock-o"></span>
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4" id="date_1">
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4" id="">
                                        <label class="col-form-label text-muted">End Time *:</label>
                                         <div class="input-group clockpicker" data-autoclose="true">
-                                            <input class="form-control" type="text" value="11:30">
+                                            <input class="form-control" type="text" value="11:30" name="out_time">
+                                            <span class="input-group-addon">
+                                                <span class="fa fa-clock-o"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6 col-lg-6 form-group mb-4">
+                                        <label class="col-form-label text-muted">Project *:</label>
+                                        <select class="form-control select2_demo_2" name="client">
+                                            <optgroup label="Client 1">
+                                                <option>Project 1</option>
+                                                <option>Project 2</option>
+                                            </optgroup>
+                                            <optgroup label="Client 2">
+                                                <option>Project 1</option>
+                                                <option>Project 2</option>
+                                                <option>Project 3</option>
+                                            </optgroup>
+                                            <optgroup label="Client 3">
+                                                <option>Project 1</option>
+                                                <option>Project 2</option>
+                                                <option>Project 3</option>
+                                                <option>Project 4</option>
+                                                <option>Project 5</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                
+                                    <div class="col-sm-6 col-md-3 col-lg-3 form-group mb-4">
+                                        <label class="col-form-label text-muted">Work Status *:</label>
+                                        <select class="selectpicker show-tick form-control" name="status">
+                                            <option>Completed</option>
+                                            <option>Ongoing</option>
+                                            <option>Scheduled</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3 col-lg-3 form-group mb-4">
+                                        <label class="col-form-label text-muted">Billed to CLient *:</label>
+                                        <div>
+                                            <select class="selectpicker show-tick form-control" data-width="200px" name="billed">
+                                                <option>Yes</option>
+                                                <option>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4">
+                                        <label class="col-form-label text-muted">Nature of Work *:</label>
+                                        <select class="form-control select2_demo_2" name="nature_of_work">
+                                            <!-- Fetch according to client -->
+                                                <option>NOW 1</option>
+                                                <option>NOW 2</option>
+                                                <option>NOW 3</option>
+                                                <option>NOW 4</option>
+                                                <option>NOW 5</option>
+                                            
+                                        </select>
+                                    </div>
+                                
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4">
+                                        <label class="col-form-label text-muted">Subject *:</label>
+                                        <select class="form-control select2_demo_2" name="subject">
+                                            <!-- Fetch according to client -->
+                                                <option>Subject 1</option>
+                                                <option>Subject 2</option>
+                                                <option>Subject 3</option>
+                                                <option>Subject 4</option>
+                                                <option>Subject 5</option>
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4">
+                                        <label class="col-form-label text-muted">Expenses - Reimbursement *:</label>
+                                        <div>
+                                            <select class="selectpicker show-tick form-control" data-width="200px" name="expenses">
+                                                <option>Yes</option>
+                                                <option>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4">
+                                        <label class="col-form-label text-muted">Work Details *:</label>
+                                        <textarea class="form-control" rows="3" name="work_details"></textarea>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4">
+                                        <label class="col-form-label text-muted">Remarks :</label>
+                                        <textarea class="form-control" rows="3" name="remarks"></textarea>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4">
+                                        <label class="col-form-label text-muted">Additional Comments :</label>
+                                        <textarea class="form-control" rows="3" name="comments"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-start bg-primary-50">
+                                <button class="btn btn-primary btn-rounded" id="addEventButton" type="submit">Add Status</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <?php
+                foreach ($status_report as $key) {
+                ?>    
+                <div class="modal fade" id="edit-event-modal<?= $key->status_id ?>" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <form class="modal-content form-horizontal" id="newEventForm" action="request_edit_status_report.php">
+                            <div class="modal-header p-4">
+                                <h5 class="modal-title">Edit Status Report</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4" id="">
+                                       <label class="col-form-label text-muted">Date *:</label>
+                                        <div class="input-group date">
+                                            <span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
+                                            <input class="form-control" type="text" value="<?= $key->status_date ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4" id="">
+                                       <label class="col-form-label text-muted">Start Time *:</label>
+                                        <div class="input-group clockpicker" data-autoclose="true">
+                                            <input class="form-control" type="text" value="<?= $key->start_time ?>">
+                                            <span class="input-group-addon">
+                                                <span class="fa fa-clock-o"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4" id="">
+                                       <label class="col-form-label text-muted">End Time *:</label>
+                                        <div class="input-group clockpicker" data-autoclose="true">
+                                            <input class="form-control" type="text" value="<?= $key->end_time ?>">
                                             <span class="input-group-addon">
                                                 <span class="fa fa-clock-o"></span>
                                             </span>
@@ -232,24 +324,25 @@
                                 <div class="row">
                                     <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4">
                                         <label class="col-form-label text-muted">Work Details *:</label>
-                                        <textarea class="form-control" rows="3"></textarea>
+                                        <textarea class="form-control" rows="3"><?= $key->work_details ?></textarea>
                                     </div>
                                     <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4">
                                         <label class="col-form-label text-muted">Remarks :</label>
-                                        <textarea class="form-control" rows="3"></textarea>
+                                        <textarea class="form-control" rows="3"><?= $key->remarks ?></textarea>
                                     </div>
                                     <div class="col-sm-6 col-md-4 col-lg-4 form-group mb-4">
                                         <label class="col-form-label text-muted">Additional Comments :</label>
-                                        <textarea class="form-control" rows="3"></textarea>
+                                        <textarea class="form-control" rows="3"><?= $key->add_comments ?></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer justify-content-start bg-primary-50">
-                                <button class="btn btn-primary btn-rounded" id="addEventButton" type="submit">Add Status</button>
+                                <button class="btn btn-primary btn-rounded" id="addEventButton" type="submit">Request for Edit Status Report</button>
                             </div>
                         </form>
                     </div>
                 </div>
+                <?php } ?>
                 <!-- End New Event Dialog-->
 
                 <!-- Event Detail Dialog-->
@@ -338,31 +431,27 @@
         <div class="page-preloader">Loading</div>
     </div>
     
-   
-    <script src="../assets/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../assets/vendors/metisMenu/dist/metisMenu.min.js"></script>
-    <script src="../assets/vendors/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="../assets/vendors/jquery-idletimer/dist/idle-timer.min.js"></script>
-    <script src="../assets/vendors/toastr/toastr.min.js"></script>
-    <script src="../assets/vendors/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="../assets/vendors/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+   <?php require_once('../includes/scripts.php'); ?>
+    
     <!-- PAGE LEVEL PLUGINS-->
     <script src="../assets/vendors/moment/min/moment.min.js"></script>
     <script src="../assets/vendors/fullcalendar/dist/fullcalendar.min.js"></script>
     <script src="../assets/vendors/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="../assets/vendors/jquery-ui/jquery-ui.min.js"></script>
-    <!-- CORE SCRIPTS-->
-    <script src="../assets/js/app.min.js"></script>
-    <!-- PAGE LEVEL SCRIPTS-->
     <script src="../assets/js/scripts/calendar-demo.js"></script>
-    <script src="../assets/js/scripts/form-plugins.js"></script>
+     <script type="text/javascript">
+          $(document).ready(function(){
+           $('#date_1 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true,
+              format: 'dd M yyyy'
+            });
+           $('.clockpicker').clockpicker();
 
-    <!-- PAGE LEVEL PLUGINS-->
-    <script src="../assets/vendors/moment/min/moment.min.js"></script>
-    <script src="../assets/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="../assets/vendors/bootstrap-maxlength/src/bootstrap-maxlength.js"></script>
+       });
+    </script>
    
    
 </body>

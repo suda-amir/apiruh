@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2018 at 10:58 AM
+-- Generation Time: Apr 23, 2018 at 02:48 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -213,7 +213,12 @@ CREATE TABLE `status_report` (
 --
 
 INSERT INTO `status_report` (`status_id`, `client_id`, `emp_id`, `status_date`, `start_time`, `end_time`, `work_hrs`, `work_status`, `nat_work`, `work_subject`, `billed`, `add_comments`, `work_details`, `remarks`, `remb`) VALUES
-(1, 'EMP01011972001', 'EMP01011972001', '2018-03-01', '05:00:00', '21:00:00', 16, '', '', '', '', '', '', '', 0);
+(1, '10', 'EMP01011972001', '2018-04-11', '11:30:00', '11:30:00', 10, 'Completed', 'NOW 1', 'Subject 1', 'Yes', 'wqgew', 'fqgwg', 'egw', 0),
+(2, '10', 'EMP01011972001', '2018-04-11', '12:00:00', '21:00:00', 9, 'Scheduled', 'NOW 4', 'Subject 2', 'No', 'Dolor ducimus eligendi magnam rerum ut suscipit in inventore id consectetur', 'Aspernatur placeat aut aut et non qui deserunt blanditiis nulla suscipit qui explicabo Ut quasi cupidatat consectetur repudiandae', 'Est qui optio magni autem eaque voluptate blanditiis voluptas enim ipsa ea laboris autem nisi et pariatur Perferendis', 0),
+(3, '10', 'EMP01011972001', '0000-00-00', '00:00:00', '00:00:00', 0, 'Ongoing', 'NOW 3', 'Subject 2', 'No', 'Vel veniam ipsam magni libero consequatur', 'Nisi culpa do dolore commodi consequatur eligendi commodi unde facere ullam', 'Perspiciatis explicabo Voluptatum minima placeat eos maiores commodi quam quisquam', 0),
+(4, '10', 'EMP01011972001', '2018-04-12', '00:00:00', '00:00:00', 0, 'Ongoing', 'NOW 3', 'Subject 2', 'No', 'Vel veniam ipsam magni libero consequatur', 'Nisi culpa do dolore commodi consequatur eligendi commodi unde facere ullam', 'Perspiciatis explicabo Voluptatum minima placeat eos maiores commodi quam quisquam', 0),
+(5, '10', 'EMP01011972001', '2017-12-14', '09:10:00', '03:30:00', -6, 'Ongoing', 'NOW 3', 'Subject 4', 'No', 'Facere soluta aspernatur sit quo libero omnis reiciendis sint vero consequat Consectetur a ea', 'Optio ipsum id sint quo nulla officiis sunt incidunt similique qui commodi beatae ullam cillum non', 'Laborum Commodi cupiditate autem ducimus harum dolores quos aliquid est incidunt ipsam', 0),
+(6, '10', 'EMP01011972001', '2018-04-14', '09:10:00', '15:15:00', 6, 'Scheduled', 'NOW 2', 'Subject 2', 'No', 'Maiores ut laboriosam sint laborum hic qui iure quo ut id aspernatur sed quisquam itaque consectetur aut', 'Deserunt laborum Cillum esse Nam laborum Minima sit at possimus vitae voluptas', 'Elit eius animi minima veritatis explicabo Pariatur Consequatur rerum sed aut voluptate assumenda et', 0);
 
 --
 -- Indexes for dumped tables
@@ -289,6 +294,12 @@ ALTER TABLE `holidays`
 --
 ALTER TABLE `leaves`
   MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `status_report`
+--
+ALTER TABLE `status_report`
+  MODIFY `status_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
